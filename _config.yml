@@ -1,2 +1,22 @@
-name: Ronel Zapata, Software Engineer
+baseurl: "" # the subpath of your site, e.g. /blog
+description: >-
+  Hello World!
+
+  I'm Ronel, a Computing Engineer currently located in Houston, TX.
+  
+  In the past 10 years I've been working on software applications in a rapidly changing environment building reliable, smart data centric products.
+
+  I love getting into new challenges and work in a multi disciplinary environment in order to get a robust product that exceeds the client expectations.
+
+  In my free time I enjoy watching movies, play video games and above all practice Taekwondo, a martial art I've been in for more than 20 years.
+email: ronelzb@gmail.com
+github_username:  ronelzb
 markdown: kramdown
+title: Ronel Zapata, Software Engineer
+twitter_username: ronelzb
+url: "https://ronelzb.github.io/"
+
+# Build settings
+plugins:
+  - jekyll-feed
+theme: minima
