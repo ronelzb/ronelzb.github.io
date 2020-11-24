@@ -1,31 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-    <title>{{ page.title }}</title>
-    <!-- link to main stylesheet -->
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-</head>
+{% include head.html %}
 
-<body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/cv">CV</a></li>
-        </ul>
-    </nav>
-    <div class="container">
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-        {{ content }}
+    {% include nav.html %}
 
-    </div><!-- /.container -->
-    <footer>
-        <ul>
-            <li><a href="mailto:ronelzb@gmail.com">email</a></li>
-            <li><a href="https://github.com/ronelzb">github.com/ronelzb</a></li>
-        </ul>
-    </footer>
+    {{ content }}
+
+    {% include footer.html %}
+
 </body>
 
 </html>
