@@ -77,7 +77,6 @@
         ga('send', 'pageview');
     </script>
     {% endif %}
-
     
     {% if site.service-worker %}
     <!-- Service Worker -->
@@ -91,47 +90,10 @@
         }
     </script>
     {% endif %}
-    
-    <script>
-        /**
-         * async load function
-         */
-    
-        function async(u, c) {
-          var d = document, t = 'script',
-              o = d.createElement(t),
-              s = d.getElementsByTagName(t)[0];
-          o.src = u;
-          if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-          s.parentNode.insertBefore(o, s);
-        }
-    
-        /**
-         * jquery.tagcloud.js
-         */
-        // only load tagcloud.js in tag.html
-        if($('#tag_cloud').length !== 0){
-            async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}',function(){
-                $.fn.tagcloud.defaults = {
-                    //size: {start: 1, end: 1, unit: 'em'},
-                    color: {start: '#bbbbee', end: '#0085a1'},
-                };
-                $('#tag_cloud a').tagcloud();
-            })
-        }
-    
-        /**
-         * fastClick.js
-         */
-        async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-            var $nav = document.querySelector("nav");
-            if($nav) FastClick.attach($nav);
-        })
-    </script>
-    
+
     {% if page.catalog %}
     <!-- Side Catalog -->
-    <script type="text/javascript">
+    <script>
         function generateCatalog (selector) {
             var P = $('div.post-container'),a,n,t,l,i,c;
             a = P.find('h1,h2,h3,h4,h5,h6');
@@ -175,4 +137,95 @@
         });
     </script>
     {% endif %}
+    
+    <script>
+        /**
+         * async load function
+         */
+    
+        function async(u, c) {
+          var d = document, t = 'script',
+              o = d.createElement(t),
+              s = d.getElementsByTagName(t)[0];
+          o.src = u;
+          if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+          s.parentNode.insertBefore(o, s);
+        }
+    
+        /**
+         * jquery.tagcloud.js
+         */
+        // only load tagcloud.js in tag.html
+        if($('#tag_cloud').length !== 0){
+            async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}',function(){
+                $.fn.tagcloud.defaults = {
+                    //size: {start: 1, end: 1, unit: 'em'},
+                    color: {start: '#bbbbee', end: '#0085a1'},
+                };
+                $('#tag_cloud a').tagcloud();
+            })
+        }
+    
+        /**
+         * fastClick.js
+         */
+        async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+            var $nav = document.querySelector("nav");
+            if($nav) FastClick.attach($nav);
+        })
+
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $toggle = $('.navbar-toggle');
+        var $navbar = $('#blog_navbar');
+        var $collapse = $('.navbar-collapse');
+
+        var __Nav__ = {
+            close: function(){
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function(){
+                    // prevent frequently toggle
+                    if($navbar.hasClass('in')) {
+                        $collapse.height(0);
+                        $navbar.removeClass("in");
+                    }
+                },400)
+            },
+            open: function(){
+                $collapse.height( "auto" );
+
+                if(!$navbar.hasClass('in')) {
+                    $navbar.addClass("in");
+                }
+            }
+        }
+
+        // Bind Event
+        $toggle.click(function(e){
+            if ($navbar.hasClass('in')) {
+                __Nav__.close();
+            }else{
+                __Nav__.open();
+            }
+        });
+
+        /**
+        * Since Fastclick is used to delegate 'touchstart' globally
+        * to hack 300ms delay in iOS by performing a fake 'click',
+        * Using 'e.stopPropagation' to stop 'touchstart' event from 
+        * $toggle/$collapse will break global delegation.
+        * 
+        * Instead, we use a 'e.target' filter to prevent handler
+        * added to document close HuxNav.  
+        *
+        * Also, we use 'click' instead of 'touchstart' as compromise
+        */
+        document.addEventListener('click', function(e){
+            if(e.target == $toggle) return;
+            if(e.target.className == 'icon-bar') return;
+            __Nav__.close();
+        })
+    </script>
 </head>
