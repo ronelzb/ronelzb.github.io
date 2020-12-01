@@ -1,43 +1,61 @@
+body, html {
+    height: 100%;
+    position: relative;
+}
+
 body {
-    margin: 60px auto;
-    width: 70%;
-}
-nav ul, footer ul {
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
-    padding: 0px;
-    list-style: none;
-    font-weight: bold;
-}
-nav ul li, footer ul li {
-    display: inline;
-    margin-right: 20px;
-}
-a {
-    text-decoration: none;
-    color: #999;
-}
-a:hover {
-    text-decoration: underline;
-}
-h1 {
-    font-size: 3em;
-    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
-}
-p {
-    font-size: 1.5em;
-    line-height: 1.4em;
-    color: #333;
-}
-footer {
-    border-top: 1px solid #d5d5d5;
-    font-size: .8em;
+    margin: 0;
+    padding: 0;
 }
 
-ul.posts { 
-    margin: 20px auto 40px; 
-    font-size: 1.5em;
+.navbar-floating {
+    background: none;
+    border: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+.page-header {
+    background: no-repeat center center;
+    background-attachment: scroll;
+    background-color: #808080;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
 }
 
-ul.posts li {
-    list-style: none;
+.page-header .title {
+    color: white;
+    padding: 85px 0 55px;
+    text-align: center;
+}
+
+.page-header .title h1 {
+    font-size: 50px;
+    margin-top: 0;
+}
+
+.page-header .subtitle {
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 10px 0 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .page-header {
+        margin-bottom: 20px;
+    }
+    .page-header .title {
+        padding: 150px 0;
+    }
+    .page-header .title h1 {
+        font-size: 80px;
+    }
 }

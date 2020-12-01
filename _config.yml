@@ -1,6 +1,7 @@
 # Site settings
 title: Ronel Zapata
 SEOTitle: Ronel Zapata
+header-icon: img/header-icon.png
 header-img: img/main-banner.png
 email: ronelzb@gmail.com
 # description: 
@@ -51,7 +52,7 @@ featured-tags: false                      # Whether to use the homepage tag
 featured-condition-size: 1                # Only if the number of the same label is greater than this number, it will appear on the homepage
 
 # Progressive Web Apps
-chrome-tab-theme-color: "#000000"
+chrome-tab-theme-color: "#000"
 service-worker: true
 
 # Friends
