@@ -6,9 +6,9 @@ header-img: img/main-banner.png
 email: ronelzb@gmail.com
 # description: 
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"
-url: "https://ronelzb.github.io"          # your host, for absolute URL
+gh-url: "https://ronelzb.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/ronelzb/ronelzb.github.io.git" # you code repository
+gh-repo: "https://github.com/ronelzb/ronelzb.github.io.git" # you code repository
 
 # Sidebar settings
 #sidebar: true                        # whether or not using Sidebar.
@@ -22,14 +22,22 @@ linkedin_username: ronel-josé-zapata-beltrán-b86b2733
 youtube_channelid: UCmN-__lazZj-vbY7PnAJ7WA
 
 # Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-permalink: pretty
-paginate: 5
-paginate_path: /posts/page:num/
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-#anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
 
-# Gems
+paginate: 5
+
+# Exclude these files from production site
+exclude:
+  - CHANGELOG.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - docs/
+
 # from PR#40, to support local preview for Jekyll 3.0
 gems: [jekyll-paginate]
 
@@ -38,7 +46,6 @@ gems: [jekyll-paginate]
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
-highlighter: rouge
 kramdown:
   input: GFM                              # use Github Flavored Markdown !important
 
@@ -51,23 +58,10 @@ ga_meas_id: 'G-84XP2BGW7K'
 featured-tags: false                      # Whether to use the homepage tag
 featured-condition-size: 1                # Only if the number of the same label is greater than this number, it will appear on the homepage
 
+# Excerpt Word Length
+# Truncates the excerpt to the specified number of words on the index page
+excerpt_length: 50
+
 # Progressive Web Apps
 chrome-tab-theme-color: "#000"
 service-worker: true
-
-# Friends
-# friends: [
-#     {
-#         title: "WY",
-#         href: "http://zhengwuyang.com"
-#     },{
-#         title: "简书·BY",
-#         href: "http://www.jianshu.com/u/e71990ada2fd"
-#     },{
-#         title: "Apple",
-#         href: "https://apple.com"
-#     },{
-#         title: "Apple Developer",
-#         href: "https://developer.apple.com/"
-#     }
-# ]

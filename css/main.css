@@ -50,11 +50,15 @@ body a:hover {
     color: #404040;
     font-size: 1.6875rem;
     line-height: 1.1;
-    font-weight: 300;
+    font-family: "Segoe UI", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
+    font-weight: 400;
 }
 
 .sidebar-container {
     color: #808080;
+}
+.sidebar-container hr {
+    color: #eee;
 }
 .sidebar-container .short-about img {
     width: 100%;
@@ -80,10 +84,33 @@ footer .list-inline {
     text-shadow: 2px 2px 8px #000;
 }
 
+.post-preview {
+    border-bottom: 1px solid #eee;
+}
+.post-preview .post-title {
+    font-weight: 800;
+    margin-top: 0;
+}
+.post-preview .post-subtitle {
+    font-family: "Segoe UI", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
+    font-weight: 300;
+}
+.post-preview .post-meta {
+    color: #808080;
+    font-size: 1.125rem;
+    font-style: italic;
+    margin: 0 0 0.625rem;
+    font-family: 'Lora', 'Times New Roman', serif;
+}
+.post-preview .post-read-more {
+    font-weight: 800;
+}
+.post-preview .blog-tags {
+    color: #808080;
+    font-size: 0.9375rem;
+}
+
 @media only screen and (min-width: 768px) {
-    .page-header {
-        margin-bottom: 20px;
-    }
     .page-header .title {
         padding: 150px 0;
     }
@@ -103,5 +130,9 @@ footer .list-inline {
     }
     footer .copyright {
         font-size: 1rem;
+    }
+
+    .post-preview .post-title {
+        font-size: 2.25rem;
     }
 }

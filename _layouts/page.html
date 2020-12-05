@@ -3,7 +3,7 @@ layout: home
 ---
 
 <!-- Page Header -->
-<header class="page-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="page-header mb-2 mb-md-3" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-10 offset-lg-1">
@@ -20,7 +20,7 @@ layout: home
     <div class="row">
         {% if page.sidebar %}
         <div class="col-12 col-md-8 offset-md-1 main-container">
-            {% if page.intro-header %}
+            {% if paginator.page == 1 and page.intro-header %}
             <div class="intro-header text-center">
                 {{ page.intro-header }}
             </div>
@@ -30,8 +30,10 @@ layout: home
         <div class="col-12 col-md-3 pl-none sidebar-container">
             <!-- About -->
             <section>
-                <hr />
-                <h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                <hr class="d-none d-md-block" />
+                <h5 class="mt-3 mt-md-none">
+                    <a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a>
+                </h5>
                 <div class="short-about">
                     {% if page.sidebar-avatar %}
                         <a href="{{ site.baseurl }}/about">
@@ -46,7 +48,7 @@ layout: home
         </div>
         {% else %}
         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 main-container">
-            {% if page.intro-header %}
+            {% if paginator.page == 1 and page.intro-header %}
             <div class="intro-header text-center">
                 {{ page.intro-header }}
             </div>
