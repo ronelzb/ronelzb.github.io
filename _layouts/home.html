@@ -4,12 +4,12 @@
 {% include head.html %}
 
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body class="d-flex flex-column min-vh-100" ontouchstart="">
 
     {% include nav.html %}
-
+    <div class="wrapper flex-grow-1">
     {{ content }}
-
+    </div>
     {% include footer.html %}
 
 </body>

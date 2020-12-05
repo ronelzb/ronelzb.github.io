@@ -6,12 +6,53 @@ layout: home
 <header class="page-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8 offset-lg-2 offset-md-1 col-md-10 ">
-                <div class="title">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="title text-shadow">
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <span class="subtitle">{{ page.description }}</span>
+                    <h4>{{ page.description }}</h4>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+<div class="container">
+    <div class="row">
+        {% if page.sidebar %}
+        <div class="col-12 col-md-8 offset-md-1 main-container">
+            {% if page.intro-header %}
+            <div class="intro-header text-center">
+                {{ page.intro-header }}
+            </div>
+            {% endif %}
+            {{content }}
+        </div>
+        <div class="col-12 col-md-3 pl-none sidebar-container">
+            <!-- About -->
+            <section>
+                <hr />
+                <h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                <div class="short-about">
+                    {% if page.sidebar-avatar %}
+                        <a href="{{ site.baseurl }}/about">
+                            <img src="{{ page.sidebar-avatar }}"/>
+                        </a>
+                    {% endif %}
+                    {% if page.sidebar-about-description %}
+                        <p>{{page.sidebar-about-description}}</p>
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+        {% else %}
+        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 main-container">
+            {% if page.intro-header %}
+            <div class="intro-header text-center">
+                {{ page.intro-header }}
+            </div>
+            {% endif %}
+            {{ content }}
+        </div>
+        {% endif %}
+    </div>
+</div>
