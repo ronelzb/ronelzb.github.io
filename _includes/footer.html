@@ -85,12 +85,14 @@
                 <p class="copyright text-muted text-center">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br/>
-                    Theme on <a href="{{ site.github_repo }}">GitHub</a> |
-                    <iframe
-                        style="margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="75px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_username }}.github.io&type=star&count=true">
-                    </iframe>
+                    <span style="margin-left: 1rem;">
+                        Theme on <a href="{{ site.github_repo }}">GitHub</a> |
+                        <iframe
+                            style="margin-bottom:-5px;"
+                            frameborder="0" scrolling="0" width="90px" height="20px"
+                            src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_username }}.github.io&type=star&count=true">
+                        </iframe>
+                    </span>
                 </p>
             </div>
         </div>
