@@ -5,7 +5,7 @@ layout: home
 <!-- Page Header -->
 <header class="page-header mb-2 mb-md-3"
     style="background-image:
-        {% if page.header-gradient %} {{ page.header-gradient-color }}; background-color: {{ page.header-base-color }};
+        {% if layout.header-gradient %} {{ layout.header-gradient-color }}; background-color: {{ layout.header-base-color }};
         {% elsif page.header-img %} url('{{ site.baseurl }}/{{ page.header-img }}');
         {% else %} url('{{ site.baseurl }}/{{ site.header-img }}'); {% endif %}">
     <div class="container">
@@ -13,7 +13,10 @@ layout: home
             <div class="col-lg-10 offset-lg-1">
                 <div class="title text-shadow">
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <h4>{{ page.description }}</h4>
+                    {% if page.description %}<h4>{{ page.description }}</h4>{% endif %}
+                    {% if layout.header-button %}
+                    <a href="https://github.com/{{ page.gh-repo }}/" target="_blank" class="btn btn-lg btn-outline-success">{{ layout.header-button-content }}</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -51,7 +54,7 @@ layout: home
             </section>
         </div>
         {% else %}
-        <div class="col-12 col-md-8 offset-md-1 main-container">
+        <div class="col-12 col-md-10 offset-md-1 main-container">
             {% if paginator.page == 1 and page.intro-header %}
             <div class="intro-header text-center">
                 {{ page.intro-header }}
