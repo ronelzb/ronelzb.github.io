@@ -52,7 +52,7 @@ kramdown:
 # Google Analytics
 #ga_track_id: 
 #ga_domain: auto                          # The default is auto, if you don’t have your own domain name, you need to keep it at auto
-ga_meas_id: 'G-84XP2BGW7K'
+#ga_meas_id: 'G-84XP2BGW7K'
 
 # Featured Tags
 featured-tags: false                      # Whether to use the homepage tag

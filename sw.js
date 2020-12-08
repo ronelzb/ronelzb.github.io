@@ -11,19 +11,18 @@ const RUNTIME = 'runtime';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "cdnjs.cloudflare.com"
-]
-
+];
 
 // The Util Function to hack URLs of intercepted requests
 const getFixedUrl = (req) => {
   var now = Date.now();
-  url = new URL(req.url)
+  url = new URL(req.url);
 
   // 1. fixed http URL
   // Just keep syncing with location.protocol 
   // fetch(httpURL) belongs to active mixed content. 
   // And fetch(httpRequest) is not supported yet.
-  url.protocol = self.location.protocol
+  url.protocol = self.location.protocol;
 
   // 2. add query for caching-busting.
   // Github Pages served with Cache-Control: max-age=600
@@ -31,14 +30,14 @@ const getFixedUrl = (req) => {
   // Until cache mode of Fetch API landed, we have to workaround cache-busting with query string.
   // Cache-Control-Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=453190
   url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
-  return url.href
+  return url.href;
 }
 
 // The Util Function to detect and polyfill req.mode="navigate"
 // request.mode of 'navigate' is unfortunately not supported in Chrome
 // versions older than 49, so we need to include a less precise fallback,
 // which checks for a GET request with an Accept: text/html header.
-const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')))
+const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')));
 
 // The Util Function to detect if a req is end with extension
 // Accordin to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
@@ -46,7 +45,7 @@ const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GE
 // including requesting an img (or any static resources) from URL Bar directly.
 // So It ends up with that regExp is still the king of URL routing ;)
 // P.S. An url.pathname has no '.' can not indicate it ends with extension (e.g. /api/version/1.2/)
-const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/))
+const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/));
 
 // Redirect in SW manually fixed github pages arbitray 404s on things?blah 
 // what we want:
@@ -55,16 +54,16 @@ const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+
 // If It's a navigation req and it's url.pathname isn't end with '/' or '.ext'
 // it should be a dir/repo request and need to be fixed (a.k.a be redirected)
 // Tracking https://twitter.com/Huxpro/status/798816417097224193
-const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathname.substr(-1) !== "/" && !endWithExtension(req))
+const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathname.substr(-1) !== "/" && !endWithExtension(req));
 
 // The Util Function to get redirect URL
 // `${url}/` would mis-add "/" in the end of query, so we use URL object.
 // P.P.S. Always trust url.pathname instead of the whole url string.
 const getRedirectUrl = (req) => {
-  url = new URL(req.url)
-  url.pathname += "/"
-  return url.href
-}
+  url = new URL(req.url);
+  url.pathname += "/";
+  return url.href;
+};
 
 /**
  *  @Lifecycle Install
@@ -81,7 +80,7 @@ self.addEventListener('install', e => {
       .then(self.skipWaiting())
       .catch(err => console.log(err))
     })
-  )
+  );
 });
 
 
@@ -92,7 +91,7 @@ self.addEventListener('install', e => {
  *  waitUntil(): activating ====> activated
  */
 self.addEventListener('activate',  event => {
-  console.log('service worker activated.')
+  console.log('service worker activated.');
   event.waitUntil(self.clients.claim());
 });
 
@@ -105,7 +104,7 @@ self.addEventListener('activate',  event => {
  */
 self.addEventListener('fetch', event => {
   // logs for debugging
-  console.log(`fetch ${event.request.url}`)
+  //console.log(`fetch ${event.request.url}`);
   //console.log(` - type: ${event.request.type}; destination: ${event.request.destination}`)
   //console.log(` - mode: ${event.request.mode}, accept: ${event.request.headers.get('accept')}`)
 
@@ -114,7 +113,7 @@ self.addEventListener('fetch', event => {
     
     // Redirect in SW manually fixed github pages 404s on repo?blah 
     if(shouldRedirect(event.request)){
-      event.respondWith(Response.redirect(getRedirectUrl(event.request)))
+      event.respondWith(Response.redirect(getRedirectUrl(event.request)));
       return;
     }
 
