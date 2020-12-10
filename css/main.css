@@ -9,12 +9,20 @@ body {
     padding: 0;
     position: relative;
 }
-body a {
+
+.text-shadow {
+    text-shadow: 2px 2px 8px #000;
+}
+
+.post-preview a,
+.sidebar-container a,
+.footer-links a {
     color: #404040;
 }
-body a:focus,
-body a:hover {
-  text-decoration: none;
+.post-preview a:focus, .post-preview a:hover,
+.sidebar-container a:focus, .sidebar-container a:hover,
+.footer-links a:focus, .footer-links a:hover,
+.blog-tags a:focus, .blog-tags a:hover {
   color: #0085A1;
 }
 
@@ -71,22 +79,9 @@ nav.custom-background {
     margin-left: auto;
     margin-right: auto;
 }
-
-footer {
-    background-color: #eaeaea;
-    border-top: 1px #eaeaea solid;
-    font-size: 0.875rem;
-    margin-top: 3.125rem;
-    padding: 1.875rem 0;
-}
-footer .list-inline {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1.875rem;
-}
-
-.text-shadow {
-    text-shadow: 2px 2px 8px #000;
+.blog-post h1, .blog-post h2, .blog-post h3, 
+.blog-post h4, .blog-post h5, .blog-post h6 {
+    color: #336699;
 }
 
 .post-preview {
@@ -110,12 +105,34 @@ footer .list-inline {
 .post-preview .post-read-more {
     font-weight: 800;
 }
-.post-preview .blog-tags {
+.blog-tags {
     font-size: 0.9375rem;
 }
-.post-preview .blog-tags,
-.post-preview .blog-tags a {
+.blog-tags,
+.blog-tags a {
     color: #808080;
+}
+
+.pagination > .page-item > .page-link {
+    color: #404040;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+footer {
+    background-color: #eaeaea;
+    border-top: 1px #eaeaea solid;
+    font-size: 0.875rem;
+    margin-top: 3.125rem;
+    padding: 1.875rem 0;
+}
+footer .list-inline {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.875rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -140,10 +157,14 @@ footer .list-inline {
     .post-preview .post-title {
         font-size: 2.25rem;
     }
+    
+    .pagination > .page-item > .page-link {
+        padding: 0.9375rem 1.5625rem;
+    }
 }
 
 @media only screen and (min-width: 960px) {
     .page-header .title {
-        padding: 150px 0;
+        padding: 106px 0;
     }
 }

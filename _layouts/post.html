@@ -6,6 +6,7 @@ header-base-color: rgb(21,153,87) #159957
 header-gradient-color: linear-gradient(120deg, rgb(21,87,153), rgb(21,153,87)) #155799=rgb(21,87,153) #159957=rgb(21,153,87)
 header-button: true
 header-button-content: View on GitHub
+post-date: true
 ---
 
 {% if page.gh-repo %}
@@ -43,32 +44,24 @@ header-button-content: View on GitHub
   {{ content }}
 </article>
 
-{% if page.tags.size > 0 %}
-  <div class="blog-tags">
-    Tags:
-    {% if site.link-tags %}
-    {% for tag in page.tags %}
-      <a href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a>
-    {% endfor %}
-    {% else %}
-      {{ page.tags | join: ", " }}
-    {% endif %}
-  </div>
+{% if page.tags and page.tags.size > 0 %}
+<p class="blog-tags">
+  Tags:
+  {% for tag in page.tags %}
+    <a href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a>
+  {% endfor %}
+</p>
 {% endif %}
 
-{% if page.social-share %}
-  {% include social-share.html %}
-{% endif %}
-
-<ul class="pager blog-pager">
+<ul class="pagination blog-pager">
   {% if page.previous.url %}
-  <li class="previous">
-    <a href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Project</a>
+  <li class="page-item previous">
+    <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Project</a>
   </li>
   {% endif %}
   {% if page.next.url %}
-  <li class="next">
-    <a href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Project &rarr;</a>
+  <li class="page-item next">
+    <a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Project &rarr;</a>
   </li>
   {% endif %}
 </ul>

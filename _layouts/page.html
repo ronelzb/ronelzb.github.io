@@ -14,9 +14,10 @@ layout: home
                 <div class="title text-shadow">
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
                     {% if page.description %}<h4>{{ page.description }}</h4>{% endif %}
+                    {% if layout.post-date %}<p>Posted on {{ page.date | date: "%B %-d, %Y" }}</p>{% endif %}
                     {% if layout.header-button %}
                     <a href="https://github.com/{{ page.gh-repo }}/" target="_blank" class="btn btn-lg btn-outline-success">{{ layout.header-button-content }}</a>
-                    {% endif %}
+                    {% endif %}                                      
                 </div>
             </div>
         </div>
