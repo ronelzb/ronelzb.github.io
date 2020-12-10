@@ -18,19 +18,19 @@ header-button-content: View on GitHub
       {% for badge in page.gh-badge %}
         {% case badge %}
           {% when 'star'%}
-            <span class="d-block d-md-inline mb-none mb-md-1">
+            <span class="d-block d-md-inline">
             <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=star&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
             </span>
             {% when 'watch'%}
-            <span class="d-block d-md-inline mb-none mb-md-1">
+            <span class="d-block d-md-inline">
             <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=watch&v=2&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
             </span>
             {% when 'fork'%}
-            <span class="d-block d-md-inline mb-none mb-md-1"></span>
+            <span class="d-block d-md-inline"></span>
             <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=fork&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
             </span>
             {% when 'follow'%}
-            <span class="d-block d-md-inline mb-none mb-md-1">
+            <span class="d-block d-md-inline">
             <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&type=follow&count=true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe>
             </span>
             {% endcase %}
