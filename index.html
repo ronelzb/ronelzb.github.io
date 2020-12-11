@@ -9,7 +9,7 @@ sidebar-avatar: /img/img-avatar.jpg      # use absolute URL, seeing it's used in
 
 {% for post in paginator.posts %}
 <article class="py-2 py-md-4  post-preview">
-    <a href="{{ post.url | relative_url }}" target="_blank">
+    <a href="{{ post.url | relative_url }}">
         <h2 class="post-title">{{ post.title }}</h2>
     </a>
     {% if post.subtitle %}

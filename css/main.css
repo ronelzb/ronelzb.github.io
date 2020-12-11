@@ -121,6 +121,30 @@ nav.custom-background {
     font-weight: 800;
     text-transform: uppercase;
 }
+.pagination > .page-item.next {
+    margin-left: auto;
+}
+
+table > thead > tr > th {
+    color: #606c71
+}
+
+table.table-display-block {
+    display: block;
+    border: unset;
+}
+
+code {
+    color: #444;
+    white-space: nowrap;
+}
+code, tt {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 0px 5px;
+}
 
 footer {
     background-color: #eaeaea;

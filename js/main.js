@@ -51,4 +51,9 @@ $(function() {
 
         prevScrollpos = currScrollpos;
     });
+
+    /**
+     * Insert Bootstrap table styling
+     */
+    $("table").addClass("table table-bordered table-hover table-display-block");
 });  

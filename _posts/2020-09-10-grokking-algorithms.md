@@ -27,4 +27,8 @@ This book is a great introduction to Python programming and algorithms in genera
 10. K nearest neighbors.
 11. Where to go next.
 
+#### Dependencies
+
+This repo was created using Python 3 and the [PyCharm](https://www.jetbrains.com/pycharm/) IDE.
+
 Check the project [here](https://github.com/ronelzb/grokking-algorithms/){:target="_blank"}.
