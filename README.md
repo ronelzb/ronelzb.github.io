@@ -1,5 +1,5 @@
 
-# [Ronel Zapata Blog](https://ronelzb.github.io/)
+# Ronel Zapata Blog
 
 <!-- ![Alt](https://raw.githubusercontent.com/ronelzb/ronelzb.github.io/master/img/readme-home.png "Ronel Zapata Blog") -->
 
