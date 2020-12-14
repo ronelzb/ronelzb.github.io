@@ -159,6 +159,27 @@ footer .list-inline {
     margin-bottom: 1.875rem;
 }
 
+/* Unathorized page */
+.notfound {
+    left: 50%;
+    max-width: 410px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+.notfound h1 {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 180px;
+    font-weight: 400;
+}
+.notfound p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 768px) {
     .page-header .title h1 {
         font-size: 80px;
@@ -184,6 +205,10 @@ footer .list-inline {
     
     .pagination > .page-item > .page-link {
         padding: 0.9375rem 1.5625rem;
+    }
+
+    .notfound h1 {
+        font-size: 250px;
     }
 }
 

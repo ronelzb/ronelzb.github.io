@@ -1,25 +1,23 @@
 ---
 layout: home
-description: "Page not found 🙊"
-header-img: "img/404-bg.jpg"
 permalink: /404.html
 ---
 
-
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">{{ page.description }}</span>
-				</div>
+<div class="container h-100">
+	<div class="row h-100">
+		<div class="col-12 col-md-10 offset-md-1 h-100">
+			<div class="notfound text-center">
+				<h1>404</h1>
+				<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+				<a class="btn btn-primary" href="/">Go To Homepage</a>
 			</div>
 		</div>
 	</div>
-</header>
+</div>
 
 <script>
-	document.body.classList.add('page-fullscreen');
+	$(function() {
+		$('.navbar').addClass("custom-background");
+		$("footer").css({ "margin-top": "unset" });
+	});
 </script>
