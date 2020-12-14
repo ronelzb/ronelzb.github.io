@@ -28,7 +28,7 @@ body {
 
 nav.custom-background {
     border-bottom: 1px solid #336699;
-    background-color: rgb(51, 102, 153, .6); /*#336699;*/
+    background-color: rgb(51, 102, 153); /*#336699; not sure if add an opacity: .6*/
     transition: transform .3s;
 }
 
