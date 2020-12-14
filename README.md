@@ -1,12 +1,12 @@
 
-# [Ronel Zapata Blog](https://ronelzb.github.io/)
+# Ronel Zapata Blog
 
-<!-- ![Alt](https://raw.githubusercontent.com/ronelzb/ronelzb.github.io/master/img/readme-home.png "Ronel Zapata Blog") -->
+![version](https://img.shields.io/badge/Version-Test-yellow)
+![release](https://img.shields.io/badge/Release-0.1.0-blue)
+![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/master/LICENSE)
 
-[![Build Status](https://travis-ci.org/ronelzb/ronelzb.github.io.svg?branch=master)](https://travis-ci.org/ronelzb/ronelzb.github.io)
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/home-assistant/home-assistant-iOS/blob/master/LICENSE)
-
-This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io).
+This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io). Also, a big shoutout to my co-worker and friend Andres Segura which his blog template helped building this one, you can check his blog [here](https://github.com/ansegura7/ansegura7.github.io).
 
 ## Getting Started
 
