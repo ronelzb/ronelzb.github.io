@@ -26,9 +26,12 @@ body {
   color: #0085A1;
 }
 
+.navbar {
+    display: none; /* To properly init hidden when the page is scrolled by default */
+}
 nav.custom-background {
     border-bottom: 1px solid #336699;
-    background-color: rgb(51, 102, 153); /*#336699; not sure if add an opacity: .6*/
+    background-color: rgb(51, 102, 153, .9);
     transition: transform .3s;
 }
 
