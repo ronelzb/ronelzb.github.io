@@ -146,6 +146,23 @@ code, tt {
     padding: 0px 5px;
 }
 
+.tags-list h2 {
+    font-weight: 1000;
+    margin-top: 2.188rem; /*35px;*/
+}
+.tags-list .tag-entry {
+    margin: 0 0 0.9375rem 1.5625rem;
+    font-size: 1.125rem;
+}
+.tags-list .tag-entry a {
+    font-size: 1.25rem;
+}
+.tags-list .tag-entry .entry-date {
+    color: #808080;
+    font-style: italic;
+    font-size: 1rem;
+}
+
 footer {
     background-color: #eaeaea;
     border-top: 1px #eaeaea solid;
