@@ -194,8 +194,11 @@ footer .list-inline {
 }
 .notfound h1 {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 180px;
+    font-size: 160px;
     font-weight: 400;
+}
+.notfound h1.offline-header {
+    font-size: 120px;
 }
 .notfound p {
     font-size: 14px;
