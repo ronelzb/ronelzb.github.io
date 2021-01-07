@@ -6,8 +6,8 @@ header-img: img/main-banner.png
 email: ronelzb@gmail.com
 # description: 
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"
-gh-url: "https://ronelzb.github.io"          # your host, for absolute URL
-# baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
+url: "https://ronelzb.github.io"          # your host, for absolute URL
+baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 gh-repo: "https://github.com/ronelzb/ronelzb.github.io.git" # you code repository
 
 # Sidebar settings
