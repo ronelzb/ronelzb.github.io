@@ -16,11 +16,11 @@
 
         <div class="collapse navbar-collapse" id="header-collapsible-navbar">
             <ul class="nav navbar-nav ml-auto text-right">
-                {% for page in site.pages %}{% if page.title %}
+                {% for nav_page in site.nav_pages %}
                 <li class="nav-item active">
-                    <a class="nav-link text-shadow" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                    <a class="nav-link text-shadow" href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a>
                 </li>
-                {% endif %}{% endfor %}
+                {% endfor %}
             </ul>
         </div>
     </div>

@@ -40,14 +40,15 @@ nav.custom-background {
     background-attachment: scroll;
     background-color: #336699;
     background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
+    position: relative;
 }
 .page-header .title {
     color: white;
     padding: 85px 0 55px;
     text-align: center;
+}
+.page-header.header-big-imgs-padding .title {
+    padding: 156px 0 55px;
 }
 .page-header .title h1 {
     font-size: 50px;
@@ -56,7 +57,10 @@ nav.custom-background {
     color: #fff;
 }
 
-.main-container .intro-header {
+.main-container {
+    margin-bottom: 3.125rem;
+}
+.main-content .intro-header {
     color: #404040;
     font-size: 1.6875rem;
     line-height: 1.1;
@@ -170,7 +174,6 @@ footer {
     background-color: #eaeaea;
     border-top: 1px #eaeaea solid;
     font-size: 0.875rem;
-    margin-top: 3.125rem;
     padding: 1.875rem 0;
 }
 footer .list-inline {
@@ -200,9 +203,34 @@ footer .list-inline {
     margin-bottom: 20px;
 }
 
+/* About: Parallax Scrolling Effect */
+.about-image {
+    height: 100vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}/*
+.page-header .img-desc {
+    background: rgba(30, 30, 30, 0.6);
+    bottom: 0;
+    color: #eee;
+    font-size: 0.6875rem;
+    padding: 0.3125rem 0.625rem;
+    position: absolute;
+    right: 0;
+}
+border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.54);
+*/
+
 @media only screen and (min-width: 768px) {
     .page-header .title h1 {
         font-size: 80px;
+    }
+
+    .page-header .img-desc {
+        font-size: 0.875rem;
     }
 
     .sidebar-container {
@@ -235,5 +263,8 @@ footer .list-inline {
 @media only screen and (min-width: 960px) {
     .page-header .title {
         padding: 106px 0;
+    }
+    .page-header.header-big-imgs-padding .title {
+        padding: 176px 0;
     }
 }
