@@ -65,3 +65,9 @@ excerpt_length: 50
 # Progressive Web Apps
 chrome-tab-theme-color: "#000"
 service-worker: true
+
+nav_pages:
+  - title: "Tags"
+    url: "/tags/"
+  - title: "About"
+    url: "/about/"
