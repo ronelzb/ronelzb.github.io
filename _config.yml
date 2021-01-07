@@ -8,7 +8,7 @@ email: ronelzb@gmail.com
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"
 url: "https://ronelzb.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-gh-repo: "https://github.com/ronelzb/ronelzb.github.io.git" # you code repository
+gh-repo: "https://github.com/ronelzb/ronelzb.github.io" # your code repository
 
 # Sidebar settings
 #sidebar: true                        # whether or not using Sidebar.
@@ -20,6 +20,9 @@ facebook_username:  ronelzb
 twitter_username:   ronelzb
 linkedin_username: ronel-josé-zapata-beltrán-b86b2733
 youtube_channelid: UCmN-__lazZj-vbY7PnAJ7WA
+
+# Permalink output option
+permalink: pretty
 
 # Build settings
 plugins:
