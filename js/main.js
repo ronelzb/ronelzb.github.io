@@ -12,7 +12,7 @@ $(function() {
     $(window).scroll(function () {
         let currScrollpos = $(this).scrollTop();
 
-        if (currScrollpos > prevScrollpos) {
+        if (currScrollpos > prevScrollpos && $navbar.is(":visible")) {
             $navbar.slideUp({
                 complete: function() {
                     if (!$(this).hasClass("custom-background")) {
@@ -20,7 +20,7 @@ $(function() {
                     }
                 }
             });
-        } else if (currScrollpos < prevScrollpos) {
+        } else if (currScrollpos < prevScrollpos && $navbar.is(":hidden")) {
             if (currScrollpos < 100 && $navbar.hasClass("custom-background")) {
                 $navbar.removeClass("custom-background");
             }
