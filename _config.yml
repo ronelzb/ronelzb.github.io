@@ -21,7 +21,7 @@ twitter_username:   ronelzb
 linkedin_username: ronel-josé-zapata-beltrán-b86b2733
 youtube_channelid: UCmN-__lazZj-vbY7PnAJ7WA
 
-# Permalink output option
+# Default output path for your pages (Mandatory for GitHub Pages if you use relative url)
 permalink: pretty
 
 # Build settings
