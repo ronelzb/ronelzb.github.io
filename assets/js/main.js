@@ -3,7 +3,7 @@ $(function() {
      * Hide bootstrap navbar when scrolling
      */
     let $navbar = $('.navbar');
-    var navVisible = false;
+    var navVisible = false, slideComplete = true;
     var prevScrollpos = 0;
     let delta = 5;
 
@@ -13,40 +13,49 @@ $(function() {
     }
 
     $(window).scroll(function () {
-        let currScrollpos = $(this).scrollTop();
+        let $currScrollpos = $(this).scrollTop();
+        let $scrollBottom = $currScrollpos + $("body").height();
+        let $documentHeight = $(".wrapper").height() + $("footer").height();
 
-        if (Math.abs(prevScrollpos - currScrollpos) <= delta)
+        // first 3 conditions for mobile devices
+        if ($currScrollpos < 0 || $scrollBottom > $documentHeight || !slideComplete 
+            || Math.abs(prevScrollpos - $currScrollpos) <= delta)
             return;
 
-        if (currScrollpos > prevScrollpos && navVisible) {
+        if ($currScrollpos > prevScrollpos && navVisible) {
             navVisible = false;
+            slideComplete = false;
 
             // Scroll down
             $navbar.slideUp({
                 complete: function() {
-                    if (!$(this).hasClass("custom-background")) {
-                        $(this).addClass("custom-background");
-                    }
+                    slideComplete = true;
                 }
             });
-        } else if (currScrollpos < prevScrollpos) {
-            if (currScrollpos < 100 && $navbar.hasClass("custom-background")) {
+        } else if ($currScrollpos < prevScrollpos) {
+            if ($currScrollpos < 100 && $navbar.hasClass("custom-background")) {
                 $navbar.removeClass("custom-background");
+            } else if ($currScrollpos >= 100 && !$navbar.hasClass("custom-background")) {
+                $navbar.addClass("custom-background");
             }
             
             if (!navVisible) {
                 navVisible = true;
+                slideComplete = false;
                 
                 //Scroll up
                 $navbar.slideDown({
                     start: function() {
                         $(this).css({ display: "flex" });
+                    },
+                    complete: function() {
+                        slideComplete = true;
                     }
                 });
             }
         }
 
-        prevScrollpos = currScrollpos;
+        prevScrollpos = $currScrollpos;
     });
 
     /**
