@@ -29,6 +29,11 @@ body {
 .navbar {
     display: none; /* To properly init hidden when the page is scrolled by default */
 }
+.navbar-toggler-icon {
+    height: 1rem;
+    vertical-align: unset;
+    width: 1rem;
+}
 nav.custom-background {
     border-bottom: 1px solid #336699;
     background-color: rgb(51, 102, 153, .9);
