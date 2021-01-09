@@ -29,6 +29,10 @@ body {
 .navbar {
     display: none; /* To properly init hidden when the page is scrolled by default */
 }
+.navbar-brand {
+    padding-bottom: unset;
+    padding-top: unset;
+}
 .navbar-toggler-icon {
     height: 1rem;
     vertical-align: unset;
