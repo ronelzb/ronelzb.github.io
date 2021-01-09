@@ -7,7 +7,7 @@ gh-badge: [watch, star, fork, follow]
 tags: [algorithms, arrays, breadth-first-search, dijkstra, dynamic-programming, k-nearest-neighbors, greedy, hashtable, python, quicksort, recursion, selection-sort]
 ---
 
-![Grokking Algorithms](/img/grokking-algorithms.jpg)
+![Grokking Algorithms](/assets/images/grokking-algorithms.jpg)
 
 *[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="_blank"}* is a fully illustrated, friendly guide that teaches you how to apply common algorithms to the practical problems you face every day as a programmer.
 

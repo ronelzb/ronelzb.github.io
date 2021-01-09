@@ -1,8 +1,8 @@
 # Site settings
 title: Ronel Zapata
 SEOTitle: Ronel Zapata
-header-icon: img/header-icon.png
-header-img: img/main-banner.png
+header-icon: assets/images/header-icon.png
+header-img: assets/images/main-banner.png
 email: ronelzb@gmail.com
 # description: 
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"

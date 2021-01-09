@@ -7,7 +7,7 @@ gh-badge: [watch, star, fork, follow]
 tags: [algorithms, arrays, exercises, graphs, java, lists, queues, stacks, strings, trees]
 ---
 
-![Grokking Algorithms](/img/cracking-the-interview-code.jpg)
+![Grokking Algorithms](/assets/images/cracking-the-interview-code.jpg)
 
 First repo made to sharpen algorithm code exercises using Java and understand how GitHub versioning works. Also to practice algorithms from one of the best books I've seen to introduce oneself into Java.
 
