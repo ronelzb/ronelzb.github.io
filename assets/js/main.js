@@ -5,6 +5,7 @@ $(function() {
     let $navbar = $('.navbar');
     var navVisible = false;
     var prevScrollpos = 0;
+    let delta = 5;
 
     if($(window).scrollTop() < 100) {
         $navbar.show();
@@ -14,9 +15,13 @@ $(function() {
     $(window).scroll(function () {
         let currScrollpos = $(this).scrollTop();
 
+        if (Math.abs(prevScrollpos - currScrollpos) <= delta)
+            return;
+
         if (currScrollpos > prevScrollpos && navVisible) {
             navVisible = false;
 
+            // Scroll down
             $navbar.slideUp({
                 complete: function() {
                     if (!$(this).hasClass("custom-background")) {
@@ -32,6 +37,7 @@ $(function() {
             if (!navVisible) {
                 navVisible = true;
                 
+                //Scroll up
                 $navbar.slideDown({
                     start: function() {
                         $(this).css({ display: "flex" });
