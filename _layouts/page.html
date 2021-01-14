@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<header class="page-header mb-2 mb-md-3 {% if page.about-img %}header-big-imgs-padding{% endif %}"
+<header class="page-header mb-2 mb-md-3"
     style="background-image:
         {% if layout.header-gradient %} {{ layout.header-gradient-color }}; background-color: {{ layout.header-base-color }};
         {% elsif page.header-img %} url('{{ site.baseurl }}/{{ page.header-img }}');
@@ -10,7 +10,7 @@ layout: home
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-10 offset-lg-1">
-                <div class="title text-shadow">
+                <div class="title{% if page.large-header %} title-large{% endif %} text-shadow">
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
                     {% if page.description %}<h4>{{ page.description }}</h4>{% endif %}
                     {% if layout.post-date %}<p>Posted on {{ page.date | date: "%B %-d, %Y" }}</p>{% endif %}
@@ -29,9 +29,9 @@ layout: home
         {% if page.sidebar %}
         <div class="col-12 col-md-8 offset-md-1 main-content">
             {% if paginator.page == 1 and page.intro-header %}
-            <div class="intro-header text-center">
+            <h4 class="intro-header text-center">
                 {{ page.intro-header }}
-            </div>
+            </h4>
             {% endif %}
             {{content }}
         </div>
