@@ -88,8 +88,10 @@ nav.custom-background {
 
 .blog-post p > img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0;
 }
 .blog-post h1, .blog-post h2, .blog-post h3, 
 .blog-post h4, .blog-post h5, .blog-post h6 {
