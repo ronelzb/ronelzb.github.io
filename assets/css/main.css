@@ -31,14 +31,9 @@ body {
     display: none; /* To properly init hidden when the page is scrolled by default */
 }
 .navbar-brand {
-    padding-bottom: unset;
-    padding-top: unset;
+    padding: unset;
 }
-.navbar-toggler-icon {
-    height: 1rem;
-    vertical-align: unset;
-    width: 1rem;
-}
+
 nav.custom-background {
     border-bottom: 1px solid #336699;
     background-color: rgb(51, 102, 153, .9);
@@ -46,8 +41,7 @@ nav.custom-background {
 }
 
 .page-header {
-    background: no-repeat center center;
-    background-attachment: scroll;
+    background: no-repeat center;
     background-color: #336699;
     background-size: cover;
     position: relative;
@@ -56,6 +50,9 @@ nav.custom-background {
     color: white;
     padding: 85px 0 55px;
     text-align: center;
+}
+.page-header .title-large {
+    padding: 170px 0 150px;
 }
 .page-header.header-big-imgs-padding .title {
     padding: 156px 0 55px;
@@ -72,8 +69,6 @@ nav.custom-background {
 }
 .main-content .intro-header {
     color: #404040;
-    font-size: 1.6875rem;
-    line-height: 1.1;
     font-family: "Segoe UI", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
     font-weight: 400;
 }
@@ -105,19 +100,15 @@ nav.custom-background {
     border-bottom: 1px solid #eee;
 }
 .post-preview .post-title {
-    font-weight: 800;
-    margin-top: 0;
+    color: #336699;
 }
 .post-preview .post-subtitle {
     font-family: "Segoe UI", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
     font-weight: 300;
 }
 .post-preview .post-meta {
-    color: #808080;
-    font-size: 1.125rem;
-    font-style: italic;
+    color: #5e9516;
     margin: 0 0 0.625rem;
-    font-family: 'Lora', 'Times New Roman', serif;
 }
 .post-preview .post-read-more {
     font-weight: 800;
@@ -217,13 +208,14 @@ footer .list-inline {
 }
 
 /* About: Parallax Scrolling Effect */
-.about-image {
-    height: 100vh;
+/*.about-image {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-}/*
+    height: 100%;
+    width: 100%;
+}
 .page-header .img-desc {
     background: rgba(30, 30, 30, 0.6);
     bottom: 0;
@@ -238,6 +230,9 @@ border-radius: 5px;
 */
 
 @media only screen and (min-width: 768px) {
+    .page-header .title-large {
+        padding: 306px 0;
+    }
     .page-header .title h1 {
         font-size: 80px;
     }
@@ -273,11 +268,20 @@ border-radius: 5px;
     }
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 992px) {
     .page-header .title {
         padding: 106px 0;
     }
-    .page-header.header-big-imgs-padding .title {
-        padding: 176px 0;
+    .page-header .title-large {
+        padding: 356px 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .page-header .title {
+        padding: 156px 0;
+    }
+    .page-header .title-large {
+        padding: 406px 0;
     }
 }
