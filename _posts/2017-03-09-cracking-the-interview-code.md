@@ -5,12 +5,13 @@ subtitle: 189 Programming Questions and Solutions is a book by Gayle Laakmann.
 gh-repo: ronelzb/cracking-the-interview-code
 gh-badge: [watch, star, fork, follow]
 tags: [algorithms, arrays, exercises, graphs, java, lists, queues, stacks, strings, trees]
+excerpt_separator: <!--more-->
 ---
 
 ![Grokking Algorithms](/assets/images/cracking-the-interview-code.jpg)
 
 First repo made to sharpen algorithm code exercises using Java and understand how GitHub versioning works. Also to practice algorithms from one of the best books I've seen to introduce oneself into Java.
-
+<!--more-->
 You can give a technical interview focused direction as this book is one of the best in the area covering:
 
 * The Interview Process: This section offers an overview on questions are selected and how you will be evaluated. What happens when you get a question wrong? When should you start preparing, and how? What language should you use?
