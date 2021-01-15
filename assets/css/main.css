@@ -26,18 +26,8 @@ body {
 .blog-tags a:focus, .blog-tags a:hover {
   color: #0085A1;
 }
-
-.navbar {
-    display: none; /* To properly init hidden when the page is scrolled by default */
-}
 .navbar-brand {
     padding: unset;
-}
-
-nav.custom-background {
-    border-bottom: 1px solid #336699;
-    background-color: rgb(51, 102, 153, .9);
-    transition: transform .3s;
 }
 
 .page-header {
@@ -208,28 +198,6 @@ footer .list-inline {
     font-weight: 400;
     margin-bottom: 20px;
 }
-
-/* About: Parallax Scrolling Effect */
-/*.about-image {
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-}
-.page-header .img-desc {
-    background: rgba(30, 30, 30, 0.6);
-    bottom: 0;
-    color: #eee;
-    font-size: 0.6875rem;
-    padding: 0.3125rem 0.625rem;
-    position: absolute;
-    right: 0;
-}
-border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.54);
-*/
 
 @media only screen and (min-width: 768px) {
     .page-header .title-large {

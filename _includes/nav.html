@@ -1,12 +1,12 @@
 <!-- Navigation -->
-<nav class="navbar navbar-dark navbar-expand-md fixed-top {% if page.default-custom-bg %}custom-background{% endif %}" role="navigation">
+<nav class="navbar navbar-light bg-light border-bottom navbar-expand-md fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header page-scroll">
             <a class="navbar-brand d-flex flex-wrap align-items-center" href="{{ site.baseurl }}/">
                 {% if site.title %}
                 <img class="d-inline-block align-top img-fluid" src="{{ site.baseurl }}/assets/images/header-logo.png" title="Home" >
                 {% endif %}
-                <span class="d-none d-md-inline text-shadow" style="margin-left: .5rem;">{{ site.title }}</span>
+                <span class="d-none d-md-inline" style="margin-left: .5rem;">{{ site.title }}</span>
             </a>
         </div>
 
@@ -18,7 +18,7 @@
             <ul class="nav navbar-nav ml-auto text-right">
                 {% for nav_page in site.nav_pages %}
                 <li class="nav-item active">
-                    <a class="nav-link text-shadow" href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a>
+                    <a class="nav-link" href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a>
                 </li>
                 {% endfor %}
             </ul>

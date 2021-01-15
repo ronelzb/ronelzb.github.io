@@ -2,7 +2,7 @@ $(function() {
     /**
      * Hide bootstrap navbar when scrolling
      */
-    let $navbar = $('.navbar');
+    /*let $navbar = $('.navbar');
     var navVisible = false, slideComplete = true;
     var prevScrollpos = 0;
     let delta = 5;
@@ -56,7 +56,7 @@ $(function() {
         }
 
         prevScrollpos = $currScrollpos;
-    });
+    });*/
 
     /**
      * Insert Bootstrap table styling
