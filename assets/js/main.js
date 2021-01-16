@@ -2,65 +2,71 @@ $(function() {
     /**
      * Hide bootstrap navbar when scrolling
      */
-    /*let $navbar = $('.navbar');
-    var navVisible = false, slideComplete = true;
-    var prevScrollpos = 0;
-    let delta = 5;
+    let $navbar = $('.navbar');
+    let data = $navbar.data();
+    let scrolling = false, scrolledPast = false;
 
-    if($(window).scrollTop() < 100) {
-        $navbar.show();
-        navVisible = true;
+    function switchStart() {
+        if (!scrolledPast) return;
+        scrolledPast = false;
+        
+        $navbar.addClass(data.startcolor);
+        $navbar.addClass(data.startsize);
+        $navbar.removeClass(data.intocolor);
+        $navbar.removeClass(data.intosize);
     }
 
-    $(window).scroll(function () {
-        let $currScrollpos = $(this).scrollTop();
-        let $scrollBottom = $currScrollpos + $("body").height();
-        let $documentHeight = $(".wrapper").height() + $("footer").height();
+    function switchInto(forceChange) {
+        if (!forceChange && scrolledPast) return;
+        scrolledPast = true;
+        
+        $navbar.removeClass(data.startcolor);
+        $navbar.removeClass(data.startsize);
+        $navbar.addClass(data.intocolor);
+        $navbar.addClass(data.intosize);
+      };
 
-        // first 3 conditions for mobile devices
-        if ($currScrollpos < 0 || $scrollBottom > $documentHeight || !slideComplete 
-            || Math.abs(prevScrollpos - $currScrollpos) <= delta)
-            return;
+    function checkScrollPosition($currScrollpos) {
+        ($currScrollpos > 100) ? switchInto() : switchStart();
+    }
 
-        if ($currScrollpos > prevScrollpos && navVisible) {
-            navVisible = false;
-            slideComplete = false;
+    $(window).scroll(() => {
+        if (!scrolling) {
+            scrolling = true;
 
-            // Scroll down
-            $navbar.slideUp({
-                complete: function() {
-                    slideComplete = true;
-                }
-            });
-        } else if ($currScrollpos < prevScrollpos) {
-            if ($currScrollpos < 100 && $navbar.hasClass("custom-background")) {
-                $navbar.removeClass("custom-background");
-            } else if ($currScrollpos >= 100 && !$navbar.hasClass("custom-background")) {
-                $navbar.addClass("custom-background");
-            }
-            
-            if (!navVisible) {
-                navVisible = true;
-                slideComplete = false;
-                
-                //Scroll up
-                $navbar.slideDown({
-                    start: function() {
-                        $(this).css({ display: "flex" });
-                    },
-                    complete: function() {
-                        slideComplete = true;
-                    }
-                });
-            }
+            checkScrollPosition($(this).scrollTop());
+
+            setTimeout(() => {
+                scrolling = false;
+            }, 100);
         }
+    });
 
-        prevScrollpos = $currScrollpos;
-    });*/
+    checkScrollPosition($(window).scrollTop());
+
+    $("#header-collapsible-navbar").on("show.bs.collapse", () => {
+        if (!$navbar.hasClass("navbar-light bg-light")) {
+            switchInto(true);
+        }
+    });
+
+    $("#header-collapsible-navbar").on("hide.bs.collapse", () => {
+        checkScrollPosition($(window).scrollTop());
+    });
 
     /**
      * Insert Bootstrap table styling
      */
     $("table").addClass("table table-bordered table-hover table-display-block");
     
+    $(window).resize(() => {
+        if (window.innerWidth < 768) {
+            console.log($("#header-collapsible-navbar").is(":visible"));
+            if ($("#header-collapsible-navbar").is(":visible") && !$navbar.hasClass("navbar-light bg-light")) {
+                switchInto(true);
+            }
+        } else {
+            checkScrollPosition($(window).scrollTop());
+        }
+    });
 });  

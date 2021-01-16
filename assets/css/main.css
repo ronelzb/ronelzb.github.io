@@ -26,10 +26,25 @@ body {
 .blog-tags a:focus, .blog-tags a:hover {
   color: #0085A1;
 }
+
+/* ===================================== */
+/* =============== NAVBAR ============== */
+/* ===================================== */
+.navbar {
+    border: none;
+    transition: 0.4s;
+}
 .navbar-brand {
     padding: unset;
 }
+.navbar--color--ghost {
+    background: rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 8px #000;
+}
 
+/* ===================================== */
+/* ============= PAGE-HEADER =========== */
+/* ===================================== */
 .page-header {
     background: no-repeat center;
     background-color: #336699;
@@ -199,7 +214,7 @@ footer .list-inline {
     margin-bottom: 20px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) { /* col-md */
     .page-header .title-large {
         padding: 306px 0;
     }
@@ -238,7 +253,7 @@ footer .list-inline {
     }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) { /* col-lg */
     .page-header .title {
         padding: 106px 0;
     }
@@ -247,7 +262,7 @@ footer .list-inline {
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) { /* col-xl */
     .page-header .title {
         padding: 156px 0;
     }
