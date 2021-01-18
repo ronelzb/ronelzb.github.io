@@ -6,28 +6,27 @@ $(function() {
     let data = $navbar.data();
     let scrolling = false, scrolledPast = false;
 
-    function switchStart() {
-        if (!scrolledPast) return;
+    function switchStart(forceChange) {
+        if (!forceChange && !scrolledPast) return;
         scrolledPast = false;
+
+        if (window.innerWidth >= 768 || !$("#header-collapsible-navbar").is(":visible")) {
+            $navbar.removeClass(data.intocolor).addClass(data.startcolor)
+        }
         
-        $navbar.addClass(data.startcolor);
-        $navbar.addClass(data.startsize);
-        $navbar.removeClass(data.intocolor);
-        $navbar.removeClass(data.intosize);
+        $navbar.removeClass(data.intosize).addClass(data.startsize);
     }
 
     function switchInto(forceChange) {
         if (!forceChange && scrolledPast) return;
         scrolledPast = true;
         
-        $navbar.removeClass(data.startcolor);
-        $navbar.removeClass(data.startsize);
-        $navbar.addClass(data.intocolor);
-        $navbar.addClass(data.intosize);
+        $navbar.removeClass(data.startcolor).addClass(data.intocolor);
+        $navbar.removeClass(data.startsize).addClass(data.intosize);
       };
 
-    function checkScrollPosition($currScrollpos) {
-        ($currScrollpos > 100) ? switchInto() : switchStart();
+    function checkScrollPosition($currScrollpos, forceChange) {
+        ($currScrollpos > 100) ? switchInto(forceChange) : switchStart(forceChange);
     }
 
     $(window).scroll(() => {
@@ -45,13 +44,31 @@ $(function() {
     checkScrollPosition($(window).scrollTop());
 
     $("#header-collapsible-navbar").on("show.bs.collapse", () => {
-        if (!$navbar.hasClass("navbar-light bg-light")) {
-            switchInto(true);
+        if(!$navbar.hasClass(data.intocolor)) {
+            $navbar.removeClass(data.startcolor).addClass(data.intocolor);
         }
+        
+        if ($navbar.hasClass(data.startsize)) {
+            $navbar.removeClass(data.startsize).addClass(data.openmenustartsize);
+        } else {
+            $navbar.removeClass(data.intosize).addClass(data.openmenuintosize);
+        }
+
+        $("body").addClass("menu-open");
     });
 
     $("#header-collapsible-navbar").on("hide.bs.collapse", () => {
-        checkScrollPosition($(window).scrollTop());
+        ($(window).scrollTop() > 100)
+            ? $navbar.removeClass(data.startcolor).addClass(data.intocolor) 
+            : $navbar.removeClass(data.intocolor).addClass(data.startcolor);
+        
+        if ($navbar.hasClass(data.openmenustartsize)) {
+            $navbar.removeClass(data.openmenustartsize).addClass(data.startsize);
+        } else {
+            $navbar.removeClass(data.openmenuintosize).addClass(data.intosize);
+        }
+
+        $("body").removeClass("menu-open");
     });
 
     /**
@@ -61,12 +78,23 @@ $(function() {
     
     $(window).resize(() => {
         if (window.innerWidth < 768) {
-            console.log($("#header-collapsible-navbar").is(":visible"));
-            if ($("#header-collapsible-navbar").is(":visible") && !$navbar.hasClass("navbar-light bg-light")) {
-                switchInto(true);
+            if ($("#header-collapsible-navbar").is(":visible")) {
+                if(!$navbar.hasClass(data.intocolor)) $navbar.removeClass(data.startcolor).addClass(data.intocolor);
+
+                if ($navbar.hasClass(data.startsize)) {
+                    $navbar.removeClass(data.startsize).addClass(data.openmenustartsize);
+                } else {
+                    $navbar.removeClass(data.intosize).addClass(data.openmenuintosize);
+                }
             }
         } else {
-            checkScrollPosition($(window).scrollTop());
+            checkScrollPosition($(window).scrollTop(), true);
+
+            if ($navbar.hasClass(data.openmenustartsize)) {
+                $navbar.removeClass(data.openmenustartsize).addClass(data.startsize);
+            } else if ($navbar.hasClass(data.openmenuintosize)) {
+                $navbar.removeClass(data.openmenuintosize).addClass(data.intosize);
+            }
         }
     });
 });  

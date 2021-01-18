@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md fixed-top navbar--color--ghost py-4 navbar-dark" 
-data-startColor="navbar--color--ghost navbar-dark" data-startSize="py-4" 
-data-intoColor="navbar-light bg-light" data-intoSize="py-3" role="navigation">
+<nav class="navbar navbar-default navbar-expand-md fixed-top navbar--color--ghost py-4 navbar-dark" 
+data-startColor="navbar--color--ghost navbar-dark" data-startSize="py-4" data-openMenuStartSize="pt-4 pb-2"
+data-intoColor="navbar-light bg-light" data-intoSize="py-3" data-openMenuIntoSize="pt-3 pb-2" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand d-flex flex-wrap align-items-center" href="{{ site.baseurl }}/">
@@ -15,7 +15,7 @@ data-intoColor="navbar-light bg-light" data-intoSize="py-3" role="navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="header-collapsible-navbar">
+        <div class="navbar-collapse collapse" id="header-collapsible-navbar">
             <ul class="nav navbar-nav ml-auto text-right">
                 {% for nav_page in site.nav_pages %}
                 <li class="nav-item active">

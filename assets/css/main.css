@@ -1,5 +1,7 @@
-body, html {
+html {
     height: 100%;
+}
+body, html {
     margin: 0;
     min-height: 100%;
     padding: 0;
@@ -8,7 +10,7 @@ body, html {
 body {
     background-color: #fff;
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
-    position: relative;
+    overflow: auto;
 }
 
 .text-shadow {
@@ -41,6 +43,14 @@ body {
     background: rgba(0,0,0,0.2);
     text-shadow: 2px 2px 8px #000;
 }
+div.overlay.navbar-collapse.show {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    background-color: black;
+}
 
 /* ===================================== */
 /* ============= PAGE-HEADER =========== */
@@ -67,6 +77,11 @@ body {
 }
 .page-header .title .btn-outline-success {
     color: #fff;
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
 }
 
 .main-container {
@@ -191,6 +206,13 @@ footer .list-inline {
 }
 
 /* Unathorized page */
+.notfound-container {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 0);
+}
 .notfound {
     left: 50%;
     max-width: 410px;
@@ -212,6 +234,23 @@ footer .list-inline {
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    body.menu-open {
+        overflow: hidden;
+    }
+    body.menu-open:after {
+        background: rgba(0,0,0,0.4);
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
 }
 
 @media only screen and (min-width: 768px) { /* col-md */
