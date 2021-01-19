@@ -10,13 +10,20 @@ layout: home
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-10 offset-lg-1">
-                <div class="title{% if page.large-header %} title-large{% endif %} text-shadow">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    {% if page.description %}<h4>{{ page.description }}</h4>{% endif %}
-                    {% if layout.post-date %}<p>Posted on {{ page.date | date: "%B %-d, %Y" }}</p>{% endif %}
-                    {% if layout.header-button %}
-                    <a href="https://github.com/{{ page.gh-repo }}/" target="_blank" class="btn btn-lg btn-outline-success">{{ layout.header-button-content }}</a>
-                    {% endif %}                                      
+                <div class="title{% if page.large-header %} title-large{% endif %} text-center text-shadow">
+                    {% if page.about-title %}
+                        {% if page.about-subtitle %}<h4><i>{{ page.about-subtitle }}</i></h4>{% endif %}
+                        <h1 class="about-title">{{ page.about-title }}</h1>
+                    {% else %}
+                        <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                        {% if page.description %}<h4>{{ page.description }}</h4>{% endif %}
+                        {% if layout.post-date %}<p>Posted on {{ page.date | date: "%B %-d, %Y" }}</p>{% endif %}
+                        {% if layout.header-button %}
+                            <a href="https://github.com/{{ page.gh-repo }}/" target="_blank" 
+                                class="btn btn-lg btn-outline-success">{{ layout.header-button-content }}
+                            </a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>

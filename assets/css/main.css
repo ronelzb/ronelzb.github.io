@@ -74,6 +74,25 @@ div.overlay.navbar-collapse.show {
 }
 .page-header .title h1 {
     font-size: 50px;
+    margin: auto;
+    position: relative;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+.page-header .title h1.about-title:before,
+.page-header .title h1.about-title:after {
+    background-color: #fff;
+    content: " ";
+    height: 2px;
+    zoom: 1;
+}
+.page-header .title h1.about-title:after {
+    margin: 15px auto 5px;
+    position: relative;
+    width: 80px;
+    top: 0;
+    left: 0;
+    display: block;
 }
 .page-header .title .btn-outline-success {
     color: #fff;
@@ -259,6 +278,20 @@ footer .list-inline {
     }
     .page-header .title h1 {
         font-size: 80px;
+    }
+    .page-header .title h1.about-title:before,
+    .page-header .title h1.about-title:after {
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        margin: 0 10px;
+        display: inline-block;
+    }
+    .page-header .title h1.about-title:before {
+        right: 100%;
+    }
+    .page-header .title h1.about-title:after {
+        left: 100%;
     }
 
     .page-header .img-desc {
