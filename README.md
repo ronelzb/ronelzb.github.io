@@ -24,11 +24,13 @@ This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiy
     bundle exec jekyll serve  # alternatively, npm start
     ```
 
-    Alternatively, you can serve the website to your whole private network using the following command (very useful if you want to test your site from a mobile browser):
+    Alternatively, you can serve the website to your whole private network using the following command (very useful if you want to test your site from a mobile browser, port is set to `4000` by default):
 
     ```sh
     bundle exec jekyll serve --host 0.0.0.0
     ```
+
+    Then `ipconfig` from the computer your serving and browse from your mobile to  `http://ip address:port`, depending on your local network, e.g: `http://192.168.XXX.YYY:4000`.
 
 4. Update your gems frequently:
 
