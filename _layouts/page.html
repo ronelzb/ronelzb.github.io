@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<header class="page-header mb-2 mb-md-3"
+<header class="page-header"
     style="background-image:
         {% if layout.header-gradient %} {{ layout.header-gradient-color }}; background-color: {{ layout.header-base-color }};
         {% elsif page.header-img %} url('{{ site.baseurl }}/{{ page.header-img }}');
@@ -30,45 +30,4 @@ layout: home
         {% if page.about-img %}<span class="img-desc"></span>{% endif %}
     </div>
 </header>
-
-<div class="container main-container">
-    <div class="row">
-        {% if page.sidebar %}
-        <div class="col-12 col-md-8 offset-md-1 main-content">
-            {% if paginator.page == 1 and page.intro-header %}
-            <h4 class="intro-header text-center">
-                {{ page.intro-header }}
-            </h4>
-            {% endif %}
-            {{content }}
-        </div>
-        <div class="col-12 col-md-3 pl-none sidebar-container">
-            <section>
-                <hr class="d-none d-md-block" />
-                <h5 class="mt-3 mt-md-none">
-                    <a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a>
-                </h5>
-                <div class="short-about">
-                    {% if page.sidebar-avatar %}
-                    <a href="{{ site.baseurl }}/about">
-                        <img class="shadow bg-white" src="{{ page.sidebar-avatar }}" />
-                    </a>
-                    {% endif %}
-                    {% if page.sidebar-about-description %}
-                    <p>{{page.sidebar-about-description}}</p>
-                    {% endif %}
-                </div>
-            </section>
-        </div>
-        {% else %}
-        <div class="col-12 col-md-10 offset-md-1 main-content">
-            {% if paginator.page == 1 and page.intro-header %}
-            <div class="intro-header text-center">
-                {{ page.intro-header }}
-            </div>
-            {% endif %}
-            {{ content }}
-        </div>
-        {% endif %}
-    </div>
-</div>
+{{ content }}
