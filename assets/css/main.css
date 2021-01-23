@@ -22,10 +22,15 @@ body {
 .footer-links a {
     color: #404040;
 }
+.current-projects a {
+    color: #149dcc;
+}
+
 .post-preview a:focus, .post-preview a:hover,
 .sidebar-container a:focus, .sidebar-container a:hover,
 .footer-links a:focus, .footer-links a:hover,
-.blog-tags a:focus, .blog-tags a:hover {
+.blog-tags a:focus, .blog-tags a:hover,
+.current-projects a:focus, .current-projects a:hover {
   color: #0085A1;
 }
 
@@ -103,6 +108,10 @@ div.overlay.navbar-collapse.show {
     position: relative;
 }
 
+/* ===================================== */
+/* ============== CONTAINERS =========== */
+/* ===================================== */
+
 .main-container {
     margin-bottom: 3.125rem;
 }
@@ -125,6 +134,9 @@ div.overlay.navbar-collapse.show {
     margin-bottom: 20px;
 }
 
+/* ===================================== */
+/* ================ POSTS ============== */
+/* ===================================== */
 .blog-post p > img {
     display: block;
     height: auto;
@@ -174,6 +186,9 @@ div.overlay.navbar-collapse.show {
     margin-left: auto;
 }
 
+/* ===================================== */
+/* ================ TABLE ============== */
+/* ===================================== */
 table > thead > tr > th {
     color: #606c71
 }
@@ -195,6 +210,9 @@ code, tt {
     padding: 0px 5px;
 }
 
+/* ===================================== */
+/* ================= TAGS ============== */
+/* ===================================== */
 .tags-list h2 {
     font-weight: 1000;
     margin-top: 2.188rem; /*35px;*/
@@ -212,6 +230,9 @@ code, tt {
     font-size: 1rem;
 }
 
+/* ===================================== */
+/* ================ FOOTER ============= */
+/* ===================================== */
 footer {
     background-color: #eaeaea;
     border-top: 1px #eaeaea solid;
@@ -224,7 +245,96 @@ footer .list-inline {
     margin-bottom: 1.875rem;
 }
 
-/* Unathorized page */
+/* ===================================== */
+/* ================ ABOUT ============== */
+/* ===================================== */
+.timeline {
+    border-right: 7px solid #F1CF63;
+    list-style-type: none;
+}
+.timeline li:nth-child(odd):after {
+    content: "";
+    background: #74c53a;
+    width: 10px;
+    height: 10px;
+    border: 3px solid #fff;
+    position: absolute;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50 spx;
+    float: left;
+    top: calc(50% - 5px);
+    right: -9px;
+    background-color: #e67e22;
+}
+.timeline li:nth-child(even) {
+    left: calc(100% + 7px);
+}
+.timeline li:nth-child(even):before {
+    content: "";
+    background: #e67e22;
+    width: 10px;
+    height: 10px;
+    border: 3px solid #fff;
+    position: absolute;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50 spx;
+    float: right;
+    top: calc(50% - 5px);
+    left: -9px;
+}
+.timeline li p {
+    color: #2c3e50;
+    margin: 1em 14px;
+}
+.timeline li:nth-child(odd) p {
+    background-color: #dff0d8;
+    box-shadow: 0px 0px 2px #79A553;
+}
+.timeline li:nth-child(odd) p:after {
+    width: 12px;
+    content: '';
+    position: absolute;
+    display: block;
+    border-width: 22px 0 22px 16px;
+    border-style: solid;
+    border-color: transparent #dff0d8;
+    right: 0;
+    top: calc(50% - 22px);
+}
+.timeline li:nth-child(even) p {
+    box-shadow: 0px 0px 2px #4C8C99;
+    background-color: #d9edf7; 
+}
+.timeline li:nth-child(even) p:before {
+    width: 0;
+    content: '';
+    position: absolute;
+    display: block;
+    border-width: 22px 16px 22px 0;
+    border-style: solid;
+    border-color: transparent #d9edf7;
+    left: 0px;
+    top: calc(50% - 22px); 
+}
+.timeline li span {
+    top: calc(50% - 12px);
+}
+.timeline li:nth-child(odd) span {
+    left: 100%;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+.timeline li:nth-child(even) span {
+    right: 100%;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+/* ===================================== */
+/* ========== UNATHORIZED PAGE ========= */
+/* ===================================== */
 .notfound-container {
     height: 100%;
     left: 50%;
