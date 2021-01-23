@@ -4,6 +4,79 @@ about-title: "Ronel Zapata"
 about-subtitle: "Hey, I'm"
 header-img: assets/images/image-avatar.jpg
 large-header: true
+about-me: "Hi, my name is Ronel José Zapata Beltrán. I'm full-stack developer working on data analytics and business intelligence projects delivering impactful, robust and reliable engineering products in the oil and energy field, working in projects with companies of all sizes and shapes.
+<br /><br />
+I love participing in new challenging projects using cutting edge technologies, getting out of my comfort zone. I hold a degree on Computing Engineer by the Universidad de Oriente in Venezuela and several certifications on SQL Server, Azure and .NET developer. My hobby is Taekwondo, training since 24 years ago to this day."
+#current-projects:
+#    - title: "Project 1"
+#      text: "Project 1 text"
+#      url: "https://project-1.com/"
+timeline:
+    - date: June 2019
+      text: "Test1"
+    - date: May 2019
+      text: "Test2"
+not-used: "Computing Engineer / Tireless Student / Taekwondo master"
 ---
 
-<!--"Computing Engineer / Tireless Student / Taekwondo master"-->
+{% if page.about-me %}
+<section class="about-me bg-light py-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">About me</h2>
+                <p class="text-justify">
+                    {{ page.about-me }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if page.current-projects %}
+<section class="current-projects bg-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Current Projects</h1>
+
+                <div class="row">
+                    {% for project in page.current-projects %}
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    {% if project.url %}
+                                    <a href="{{ project.url }}" target="_blank">{{ project.title }}</a>
+                                    {% else %}
+                                    {{ project.title }}
+                                    {% endif %}
+                                </h4>
+                                {% if project.text %}<p class="card-text">{{ project.text }}</p>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<section class="main-container mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mt-2 mt-md-3">
+                <h2>My journey</h2>
+                <ul class="timeline m-0 p-0 w-50">
+                    {% for event in page.timeline %}
+                    <li class="my-4 position-relative">
+                        <p class="p-3 rounded text-center">{{ event.text }}</p>
+                        <span class="position-absolute font-weight-bold text-info">{{ event.date | date: "%B %Y" }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
