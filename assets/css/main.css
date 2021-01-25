@@ -22,7 +22,7 @@ body {
 .footer-links a {
     color: #404040;
 }
-.current-projects a {
+.current-projects a, .timeline a {
     color: #149dcc;
 }
 
@@ -30,7 +30,8 @@ body {
 .sidebar-container a:focus, .sidebar-container a:hover,
 .footer-links a:focus, .footer-links a:hover,
 .blog-tags a:focus, .blog-tags a:hover,
-.current-projects a:focus, .current-projects a:hover {
+.current-projects a:focus, .current-projects a:hover,
+.timeline a:focus, .timeline a:hover {
   color: #0085A1;
 }
 
@@ -252,7 +253,7 @@ footer .list-inline {
     border-right: 7px solid #F1CF63;
     list-style-type: none;
 }
-.timeline li:nth-child(odd):after {
+.timeline li.left:after {
     content: "";
     background: #74c53a;
     width: 10px;
@@ -267,10 +268,10 @@ footer .list-inline {
     right: -9px;
     background-color: #e67e22;
 }
-.timeline li:nth-child(even) {
+.timeline li.right {
     left: calc(100% + 7px);
 }
-.timeline li:nth-child(even):before {
+.timeline li.right:before {
     content: "";
     background: #e67e22;
     width: 10px;
@@ -288,11 +289,11 @@ footer .list-inline {
     color: #2c3e50;
     margin: 1em 14px;
 }
-.timeline li:nth-child(odd) p {
+.timeline li.left p {
     background-color: #dff0d8;
     box-shadow: 0px 0px 2px #79A553;
 }
-.timeline li:nth-child(odd) p:after {
+.timeline li.left p:after {
     width: 12px;
     content: '';
     position: absolute;
@@ -303,11 +304,11 @@ footer .list-inline {
     right: 0;
     top: calc(50% - 22px);
 }
-.timeline li:nth-child(even) p {
+.timeline li.right p {
     box-shadow: 0px 0px 2px #4C8C99;
     background-color: #d9edf7; 
 }
-.timeline li:nth-child(even) p:before {
+.timeline li.right p:before {
     width: 0;
     content: '';
     position: absolute;
@@ -321,12 +322,12 @@ footer .list-inline {
 .timeline li span {
     top: calc(50% - 12px);
 }
-.timeline li:nth-child(odd) span {
+.timeline li.left span {
     left: 100%;
     margin-left: 20px;
     white-space: nowrap;
 }
-.timeline li:nth-child(even) span {
+.timeline li.right span {
     right: 100%;
     margin-right: 20px;
     white-space: nowrap;
