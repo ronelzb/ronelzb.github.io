@@ -13,28 +13,58 @@ I love participing in new challenging projects using cutting edge technologies, 
 #      url: "https://project-1.com/"
 timeline:
     - date: May 2020
+      position: "left"
       text: "Started a new project with Sentinel Peak Resources as the project technical leader"
     - date: February 2020
+      position: "left"
       text: "Started a new project with Total EP Barnett as the project technical leader"
     - date: January 2020
+      position: "right"
       text: "Earned certification: <a href='https://www.youracclaim.com/badges/a2e7dd0f-4600-407f-987a-2cd6231cc2a6/public_url' target='_blank' title='Microsoft certification'>Azure Administrator Associate</a>"
+    - date: July 2018
+      position: "left"
+      text: "Started working at Exxon Mobil HQ (The Woodlands, TX) as an external consultant on-site"
     - date: June 2018
-      text: "Moved to the US into working at Exxon Mobil HQ (The Woodlands, TX) as an external company consultant on-site"
+      position: "right"
+      text: "Moved to the US"
     - date: July 2017
+      position: "right"
       text: "Earned 4<sup>th</sup> Dan in Taekwondo with best attitude award and 2<sup>nd</sup> best overall exam"
+    - date: October 2016
+      position: "left"
+      text: "Worked on a supporting ConocoPhillips project as a remote consultant"
     - date: September 2016
+      position: "right"
       text: "Earned certification: <a href='https://www.youracclaim.com/badges/448cc2f4-4237-44f5-a50c-4a824f52eed1/public_url' target='_blank' title='Microsoft certification'>Data Management and Analytics - SQL Server</a>"
+    - date: August 2016
+      position: "left"
+      text: "Worked on a continuing engineering project for Santos (Adelaide, Aus) as a remote consultant"
     - date: April 2016
+      position: "right"
       text: "Earned certification: <a href='https://www.youracclaim.com/badges/69830c2f-d15f-44ac-bf3c-48fe084043c7/public_url' target='_blank' title='Microsoft certification'>SQL Server 2012/2014</a>"
+    - date: April 2015
+      position: "left"
+      text: "Started working on a EP Energy project, located in Villahermosa, as an external consultant"
     - date: November 2014
+      position: "right"
       text: "Earned 3<sup>rd</sup> Dan in Taekwondo"
+    - date: February 2014
+      position: "left"
+      text: "Started working on a PETROFAC México (now called Perenco México) project, located in Villahermosa, as an external consultant"
+    - date: October 2011
+      position: "left"
+      text: "Started working at PEMEX Región Sur as an external consultant on-site"
     - date: September 2011
-      text: "Moved to México into working at PEMEX Región Sur as an external company consultant on-site"
+      position: "right"
+      text: "Moved to México"
     - date: October 2010
-      text: "Started working at World Tire Consultores in Venezuela as a System Analyst and SAP Business One consultant"
+      position: "left"
+      text: "Started working at World Tire Consultores as a System Analyst and SAP Business One consultant"
     - date: August 2009
-      text: "Started working at Servitalentos del Centro in Venezuela as a System Analyst and SAP Basis consultant"
+      position: "left"
+      text: "Started working at Servitalentos del Centro as a System Analyst and SAP Basis consultant"
     - date: May 2009
+      position: "right"
       text: "Earned a Computing Engineer's degree at the Universidad de Oriente in Venezuela"
 not-used: "Computing Engineer / Tireless Student / Taekwondo master"
 ---
@@ -90,7 +120,7 @@ not-used: "Computing Engineer / Tireless Student / Taekwondo master"
                 <h2>My journey</h2>
                 <ul class="timeline m-0 p-0 w-50">
                     {% for event in page.timeline %}
-                    <li class="my-4 position-relative">
+                    <li class="my-4 position-relative {{ event.position }}">
                         <p class="p-3 rounded text-center">{{ event.text }}</p>
                         <span class="position-absolute font-weight-bold text-info">{{ event.date | date: "%B %Y" }}</span>
                     </li>
