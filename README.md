@@ -6,7 +6,7 @@
 ![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/master/LICENSE)
 
-This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io). A big shoutout to my co-worker and friend Andres Segura which his blog template helped building this one, you can check his blog [here](https://github.com/ansegura7/ansegura7.github.io). And last but not least Matt Carmody for the great front-end ideas that led me to a very robust look-and-feel and responsive oriented page.
+This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io). A big shoutout to my co-worker and friend Andres Segura which his blog template helped building this one, you can check his blog [here](https://github.com/ansegura7/ansegura7.github.io). To Matt Carmody for the great front-end ideas that led me to a very robust look-and-feel and responsive oriented page. And last but not least, my wife Karla for being my QA Tester.
 
 ## Getting Started
 
