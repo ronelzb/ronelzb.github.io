@@ -22,7 +22,7 @@ body {
 .footer-links a {
     color: #404040;
 }
-.current-projects a, .timeline a {
+.current-projects a, .timeline ul a {
     color: #149dcc;
 }
 
@@ -31,7 +31,7 @@ body {
 .footer-links a:focus, .footer-links a:hover,
 .blog-tags a:focus, .blog-tags a:hover,
 .current-projects a:focus, .current-projects a:hover,
-.timeline a:focus, .timeline a:hover {
+.timeline ul a:focus, .timeline ul a:hover {
   color: #0085A1;
 }
 
@@ -249,11 +249,11 @@ footer .list-inline {
 /* ===================================== */
 /* ================ ABOUT ============== */
 /* ===================================== */
-.timeline {
+.timeline ul {
     border-right: 7px solid #F1CF63;
     list-style-type: none;
 }
-.timeline li.left:after {
+.timeline ul li.left:after {
     content: "";
     background: #74c53a;
     width: 10px;
@@ -268,10 +268,10 @@ footer .list-inline {
     right: -9px;
     background-color: #e67e22;
 }
-.timeline li.right {
+.timeline ul li.right {
     left: calc(100% + 7px);
 }
-.timeline li.right:before {
+.timeline ul li.right:before {
     content: "";
     background: #e67e22;
     width: 10px;
@@ -285,15 +285,15 @@ footer .list-inline {
     top: calc(50% - 5px);
     left: -9px;
 }
-.timeline li p {
+.timeline ul li p {
     color: #2c3e50;
-    margin: 1em 14px;
 }
-.timeline li.left p {
+.timeline ul li.left p {
     background-color: #dff0d8;
     box-shadow: 0px 0px 2px #79A553;
+    margin: 1em 14px 1em 0;
 }
-.timeline li.left p:after {
+.timeline ul li.left p:after {
     width: 12px;
     content: '';
     position: absolute;
@@ -304,11 +304,12 @@ footer .list-inline {
     right: 0;
     top: calc(50% - 22px);
 }
-.timeline li.right p {
+.timeline ul li.right p {
     box-shadow: 0px 0px 2px #4C8C99;
-    background-color: #d9edf7; 
+    background-color: #d9edf7;
+    margin: 1em 0 1em 14px;
 }
-.timeline li.right p:before {
+.timeline ul li.right p:before {
     width: 0;
     content: '';
     position: absolute;
@@ -319,18 +320,41 @@ footer .list-inline {
     left: 0px;
     top: calc(50% - 22px); 
 }
-.timeline li span {
+.timeline ul li span {
     top: calc(50% - 12px);
 }
-.timeline li.left span {
+.timeline ul li.left span {
     left: 100%;
     margin-left: 20px;
     white-space: nowrap;
 }
-.timeline li.right span {
+.timeline ul li.right span {
     right: 100%;
     margin-right: 20px;
     white-space: nowrap;
+}
+
+.facts-skill-set h3 {
+    border-width: medium !important;
+}
+.facts li {
+    line-height: 32px;
+}
+.skills {
+    list-style-type: none;
+    padding-inline-end: 40px;
+}
+.facts li:not(:last-child), .skills li:not(:last-child) {
+    margin-bottom: .5rem;
+}
+.skill {
+    background-color:#ffb74d;
+    margin: auto;
+    margin-right: .5rem;
+    width: 8rem;
+}
+.skill-rating {
+    line-height: 1;
 }
 
 /* ===================================== */
