@@ -17,21 +17,16 @@ body {
     text-shadow: 2px 2px 8px #000;
 }
 
+a {
+    color: #149dcc;
+}
 .post-preview a,
 .sidebar-container a,
 .footer-links a {
     color: #404040;
 }
-.current-projects a, .timeline ul a {
-    color: #149dcc;
-}
 
-.post-preview a:focus, .post-preview a:hover,
-.sidebar-container a:focus, .sidebar-container a:hover,
-.footer-links a:focus, .footer-links a:hover,
-.blog-tags a:focus, .blog-tags a:hover,
-.current-projects a:focus, .current-projects a:hover,
-.timeline ul a:focus, .timeline ul a:hover {
+a:focus, a:hover {
   color: #0085A1;
 }
 
@@ -334,7 +329,7 @@ footer .list-inline {
     white-space: nowrap;
 }
 
-.facts-skill-set h3 {
+.about-me h3 {
     border-width: medium !important;
 }
 .facts li {
