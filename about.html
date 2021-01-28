@@ -69,7 +69,7 @@ timeline:
 facts:
   - "The first computer I was in contact with was a <a href='https://en.wikipedia.org/wiki/Intel_80386' target='_blank'>80386</a> which ran MS-DOS and videogames like Wolf3d and Prince of Persia."
   - "Every time when turning on my first PC I was so curious on how a lifeless object could <b>think</b>, since then I voyaged in the adventure of knowing more about it and my passion about computers only grew ever since."
-  - "Back in 2006, I had the priviledge of training Taekwondo with Adriana Carmona and the Venezuela national selection for a short time."
+  - "Back in 2006, I had the priviledge of training Taekwondo with Adriana Carmona (Olympic gold medal in Barcelona '92) and the Venezuela national selection for a short time."
   - "For me, study and train any sport are essential and a never-ending cycle."
   - "I am a dual citizen of México and Venezuela."
 skills:
@@ -78,7 +78,7 @@ skills:
   - name: "Java"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
   - name: "Python"
-    rating: ["fas fa-star", "fas fa-star", "fas fa-star", "far fa-star", "far fa-star"]
+    rating: ["fas fa-star", "fas fa-star", "fas fa-star-half-alt", "far fa-star", "far fa-star"]
   - name: "SQL Server"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
   - name: "HTML/CSS"
@@ -91,11 +91,34 @@ skills:
 <section class="about-me bg-light py-4">
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <h2 class="text-center">About me</h2>
                 <p class="text-justify">
                     {{ page.about-me }}
                 </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <h4 class="border-bottom border-secondary">Fun Facts</h3>
+              <ul class="facts text-justify">
+                {% for fact in page.facts %}
+                <li>{{ fact }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col-12 col-md-6">
+              <h4 class="border-bottom border-secondary">Skill set</h3>
+              <ul class="skills text-center text-md-left">
+                {% for skill in page.skills%}
+                <li>
+                  <span class="skill text-center text-white font-weight-bold rounded d-inline-block px-2 py-1">
+                    {{ skill.name }}
+                  </span>
+                  {% for item in skill.rating %}
+                  <i class="{{ item }} align-middle text-secondary skill-rating"></i>
+                  {% endfor %}
+                </li>
+                {% endfor %}
+              </ul>
             </div>
         </div>
     </div>
@@ -141,35 +164,6 @@ skills:
           <li class="my-4 position-relative {{ event.position }}">
             <p class="p-3 rounded text-center">{{ event.text }}</p>
             <span class="position-absolute font-weight-bold text-info">{{ event.date | date: "%B %Y" }}</span>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="facts-skill-set bg-light py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h3 class="border-bottom border-dark">Fun Facts about me</h3>
-        <ul class="facts text-justify">
-          {% for fact in page.facts %}
-          <li>{{ fact }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="col-12 col-md-6">
-        <h3 class="border-bottom border-dark">Skill set</h3>
-        <ul class="skills text-center text-md-left">
-          {% for skill in page.skills%}
-          <li>
-            <span class="skill text-center text-white font-weight-bold rounded d-inline-block px-2 py-1">
-              {{ skill.name }}
-            </span>
-            {% for item in skill.rating %}
-            <i class="{{ item }} align-middle text-secondary skill-rating"></i>
-            {% endfor %}
           </li>
           {% endfor %}
         </ul>
