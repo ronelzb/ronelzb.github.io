@@ -85,6 +85,7 @@ skills:
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
   - name: "JS (JQuery)"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star-half-alt"]
+resume: "/assets/resume.pdf"
 ---
 
 {% if page.about-me %}
@@ -120,7 +121,7 @@ skills:
                 {% endfor %}
               </ul>
               <div class="text-center text-md-left mt-0 mt-md-5 resume">
-                <a href="/assets/resume.pdf" target="_blank">View Resume<i class="fas fa-file-pdf fa-lg ml-3 align-middle"></i></a>
+                <a href="{{ page.resume }}" target="_blank">View Resume<i class="fas fa-file-pdf fa-lg ml-3 align-middle"></i></a>
               </div>
             </div>
         </div>
