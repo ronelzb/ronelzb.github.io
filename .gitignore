@@ -40,3 +40,4 @@ _site/
 # Custom
 *.old/
 *.old.*
+*.log
