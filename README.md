@@ -1,8 +1,8 @@
 
 # Ronel Zapata Blog
 
-![version](https://img.shields.io/badge/Version-Test-yellow)
-![release](https://img.shields.io/badge/Release-0.1.0-blue)
+![version](https://img.shields.io/badge/Version-Prod-brightgreen)
+![release](https://img.shields.io/badge/Release-1.0.0-blue)
 ![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/master/LICENSE)
 
