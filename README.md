@@ -2,7 +2,7 @@
 # Ronel Zapata Blog
 
 ![version](https://img.shields.io/badge/Version-Prod-brightgreen)
-![release](https://img.shields.io/badge/Release-1.0.0-blue)
+![release](https://img.shields.io/badge/Release-1.0.1-blue)
 ![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/master/LICENSE)
 
@@ -12,11 +12,29 @@ This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiy
 
 1. You will need [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/) to use [Jekyll](https://jekyllrb.com/). Following [Using Jekyll with Bundler](https://jekyllrb.com/tutorials/using-jekyll-with-bundler/) to fullfill the enviromental requirement.
 
-2. Install dependencies in the `Gemfile`:
-
-    ```sh
-    bundle install
-    ```
+2. Install dependencies:
+    * Get started with bundler `bundle install`.
+    * If missing, specify your dependencies in a Gemfile in your project's root:
+        ```sh
+        source 'https://rubygems.org'
+        gem 'nokogiri'
+        gem 'rack', '~> 2.0.1'
+        gem 'rspec'
+        ```
+    * Install all of the required gems from your specified sources: `bundle install`.
+    * If installing the project for the first time add the Gemfile: `git add Gemfile Gemfile.lock`.
+    * Use Bundler to add Jekyll as a dependency: `bundle add jekyll`.
+    * If the project is new, create a Jekyll Scaffold, using `--force` parameter because our folder isn't empty:
+        ```sh
+        bundle exec jekyll new --force --skip-bundle .
+        bundle install
+        ```
+    * Install the rest of the missing dependencies using:
+        ```sh
+        bundle add jekyll-paginate
+        bundle add jekyll-sitemap
+        bundle add webrick # use this if ruby 3.0 or greater is installed
+        ```
 
 3. Serve the website (`localhost:4000` by default):
 
