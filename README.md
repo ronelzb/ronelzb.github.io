@@ -15,21 +15,26 @@ This is my very first blog modified from [Qiubaiying](https://github.com/qiubaiy
 2. Install dependencies:
     * Get started with bundler `bundle install`.
     * If missing, specify your dependencies in a Gemfile in your project's root:
+
         ```sh
         source 'https://rubygems.org'
         gem 'nokogiri'
         gem 'rack', '~> 2.0.1'
         gem 'rspec'
         ```
+
     * Install all of the required gems from your specified sources: `bundle install`.
     * If installing the project for the first time add the Gemfile: `git add Gemfile Gemfile.lock`.
     * Use Bundler to add Jekyll as a dependency: `bundle add jekyll`.
     * If the project is new, create a Jekyll Scaffold, using `--force` parameter because our folder isn't empty:
+
         ```sh
         bundle exec jekyll new --force --skip-bundle .
         bundle install
         ```
+
     * Install the rest of the missing dependencies using:
+
         ```sh
         bundle add jekyll-paginate
         bundle add jekyll-sitemap

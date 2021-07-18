@@ -4,10 +4,10 @@ title: Export Resume to PDF
 subtitle: Helper HTML/CSS template to convert a page into PDF.
 gh-repo: ronelzb/cv_htmltopdf
 gh-badge: [watch, star, fork, follow]
-tags: [bootstrap, css, html]
+tags: [bootstrap, css, font-awesome, html]
 ---
 
-Every once in a while we want to update our Resume/CV but it becomes real difficult with so many paid third-party tools or consultancy services.
+Every once in a while, we want to update our Resume/CV but it becomes real difficult with so many paid third-party tools or consultancy services.
 
 This repo was created to make my own professional Resume and help others like me struggling to create a creative, out-of-the-box and innovative Resume.
 
