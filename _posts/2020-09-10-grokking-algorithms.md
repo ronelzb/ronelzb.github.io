@@ -14,7 +14,7 @@ excerpt_separator: <!--more-->
 <!--more-->
 This book is a great introduction to Python programming and algorithms in general. We'll start with basics like sorting and searching then move on to more complex problems.
 
-### Contents
+## Contents
 
 1. Introduction to algorithms.
 2. Selection sort.
@@ -28,7 +28,7 @@ This book is a great introduction to Python programming and algorithms in genera
 10. K nearest neighbors.
 11. Where to go next.
 
-### Dependencies
+## Dependencies
 
 This repo was created using Python 3 and the [PyCharm](https://www.jetbrains.com/pycharm/) IDE.
 
