@@ -4,11 +4,13 @@ SEOTitle: Ronel Zapata
 # header-icon: assets/images/header-icon.png
 header-img: assets/images/main-banner.png
 email: ronelzb@gmail.com
-description: ""
+description: "This is my personal webpage where I show the latest projects I’m working on, you can find a little bit about me in the About section, if you have any comments/suggestion please let me know"
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"
 url: "https://ronelzb.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 gh-repo: "https://github.com/ronelzb/ronelzb.github.io" # your code repository
+
+og-url: ronelzb.github.io
 
 # Sidebar settings
 #sidebar: true                        # whether or not using Sidebar.
