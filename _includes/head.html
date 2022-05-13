@@ -7,11 +7,12 @@
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     <meta name="google-site-verification" content="eaCn6_L_vMfhSXyNrF2189tYTWVwMwFaCTB6xs80DLs" />
 
-    <meta property="og:title" content="Personal portfolio" />
+    <meta property="og:title" content="{{ site.title }} - Software Engineer personal portfolio" />
+    <meta property="og:type" content="website" />
     <meta name="image" property="og:image" content="{{ site.baseurl }}/assets/images/image-avatar.jpg" />
     <meta name="author" content="{{ site.title }}"/>
     <meta property="og:description" content="{{ site.description }}" />
-    <meta property="og:url" content="{{ site.og-url }}" />
+    <meta property="og:url" content="{{ site.url }}" />
 
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
