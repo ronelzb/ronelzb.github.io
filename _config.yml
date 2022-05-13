@@ -1,10 +1,10 @@
 # Site settings
 title: Ronel Zapata
 SEOTitle: Ronel Zapata
-header-icon: assets/images/header-icon.png
+# header-icon: assets/images/header-icon.png
 header-img: assets/images/main-banner.png
 email: ronelzb@gmail.com
-# description: 
+description: ""
 keyword: "RZ, Ronel Zapata, ronelzb, .NET, Java, Python, SQL Server, Full-Stack developer, Software engineer"
 url: "https://ronelzb.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
