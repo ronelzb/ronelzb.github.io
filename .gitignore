@@ -41,3 +41,5 @@ _site/
 *.old/
 *.old.*
 *.log
+
+.idea
