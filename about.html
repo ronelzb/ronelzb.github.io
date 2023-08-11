@@ -6,20 +6,22 @@ header-img: assets/images/image-avatar.jpg
 large-header: true
 about-me: "Hi, my name is Ronel José Zapata Beltrán. I'm a full-stack developer with 10+ years working on data analytics and business intelligence software solutions delivering impactful, robust and reliable engineering products in the oil and energy field, working in projects with companies of all sizes and shape.
 <br /><br />
-I love getting involved in new challenging projects using cutting edge technologies, getting out of my comfort zone. I hold a degree in Computer Engineering from Universidad de Oriente in Venezuela and several certifications on SQL Server, Azure and .NET development. My hobby is Taekwondo, training since 24 years ago to this day."
+I love getting involved in new challenging projects using cutting edge technologies, getting out of my comfort zone. I hold a degree in Computer Engineering from Universidad de Oriente in Venezuela and several certifications on SQL Server, Azure and .NET development. My hobby is Taekwondo, training since 26 years ago to this day."
 facts:
-  - "The first computer I was in contact with was a <a href='https://en.wikipedia.org/wiki/Intel_80386' target='_blank'>80386</a> which ran MS-DOS and videogames like Wolf3d and Prince of Persia."
+  - "The first computer I was in contact with was a <a href='https://en.wikipedia.org/wiki/Intel_80386' target='_blank'>80386</a> which ran MS-DOS and video games like Wolf3d and Prince of Persia."
   - "Every time when turning on my first PC I was so curious on how a lifeless object could <b>think</b>, since then I voyaged in the adventure of knowing more about it and my passion about computers only grew ever since."
   - "Back in 2006, I had the priviledge of training Taekwondo with Adriana Carmona (Olympic gold medal in Barcelona '92) and the Venezuela national selection for a short time."
   - "For me, study and train any sport are essential and a never-ending cycle."
   - "I am a dual citizen of México and Venezuela."
 skills:
+  - name: "Python"
+    rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star-half-alt"]
   - name: ".NET (C#, VB)"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star-half-alt"]
   - name: "Java"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
-  - name: "Python"
-    rating: ["fas fa-star", "fas fa-star", "fas fa-star-half-alt", "far fa-star", "far fa-star"]
+  - name: "PostgreSQL"
+    rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
   - name: "SQL Server"
     rating: ["fas fa-star", "fas fa-star", "fas fa-star", "fas fa-star", "far fa-star"]
   - name: "Oracle"
@@ -34,6 +36,18 @@ resume: "/assets/ronel-zapata-resume-full-stack-developer.pdf"
 #      text: "Project 1 text"
 #      url: "https://project-1.com/"
 timeline:
+  - date: Jun 2023
+    position: "right"
+    text: "Earned certification: <a href='https://www.credly.com/badges/172d1d4f-7ac0-4a45-a92c-87a58e09445d/public_url' target='_blank' title='AWS certification'>AWS Certified Solutions Architect – Associate</a>"
+  - date: Mar 2023
+    position: "right"
+    text: "Earned certification: <a href='https://www.credly.com/badges/d118d90b-a341-4f7a-aba8-1f5683da9718/public_url' target='_blank' title='AWS certification'>AWS Certified Cloud Practitioner</a>"
+  - date: Dec 2022
+    position: "right"
+    text: "Earned 5th Dan in Taekwondo in an unusual but very emotional online exam, which symbolizes <i>endless growth</i>"
+  - date: Apr 2022
+    position: "left"
+    text: "Started a new position as Software Engineer at <a href='https://www.cedar.com/'>Cedar</a>"
   - date: May 2020
     position: "left"
     text: "Started a new project with Sentinel Peak Resources as the project technical leader"
@@ -101,7 +115,7 @@ timeline:
                 </p>
             </div>
             <div class="col-12 col-md-6">
-              <h4 class="border-bottom border-secondary">Fun Facts</h3>
+              <h4 class="border-bottom border-secondary">Fun Facts</h4>
               <ul class="facts text-justify">
                 {% for fact in page.facts %}
                 <li>{{ fact }}</li>
@@ -109,7 +123,7 @@ timeline:
               </ul>
             </div>
             <div class="col-12 col-md-6">
-              <h4 class="border-bottom border-secondary">Skill set</h3>
+              <h4 class="border-bottom border-secondary">Skill set</h4>
               <ul class="skills text-center text-md-left">
                 {% for skill in page.skills%}
                 <li>
