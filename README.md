@@ -1,4 +1,3 @@
-
 # Ronel Zapata Blog
 
 ![version](https://img.shields.io/badge/Version-Prod-brightgreen)
@@ -17,93 +16,48 @@ my QA Tester.
 
 ## Getting Started
 
-1. You will need [Ruby](https://www.ruby-lang.org/en/) and
-   [Bundler](https://bundler.io/) to use [Jekyll](https://jekyllrb.com/).
-   Following
-   [Using Jekyll with Bundler](https://jekyllrb.com/tutorials/using-jekyll-with-bundler/)
-   to fullfill the enviromental requirement.
+### Prerequisites
 
-2. Install dependencies:
-   * Get started with bundler `bundle install`.
-   * If missing, specify your dependencies in a Gemfile in your project's root:
+- [Ruby](https://rubyinstaller.org/) (4.0+ recommended) with the DevKit
+- [Node.js](https://nodejs.org/) (20+) and npm
 
-     ```sh
-     source 'https://rubygems.org'
-     gem 'nokogiri'
-     gem 'rack', '~> 2.0.1'
-     gem 'rspec'
-     ```
+### First-time setup
 
-   * Install all of the required gems from your specified sources:
-     `bundle install`.
-   * If installing the project for the first time add the Gemfile:
-     `git add Gemfile Gemfile.lock`.
-   * Use Bundler to add Jekyll as a dependency: `bundle add jekyll`.
-   * If the project is new, create a Jekyll Scaffold, using `--force` parameter
-     because our folder isn't empty:
+Run the setup script — it checks prerequisites, installs all Ruby gems and Node
+packages, and runs a lint check to confirm everything is wired up correctly:
 
-     ```sh
-     bundle exec jekyll new --force --skip-bundle .
-     bundle install
-     ```
+```sh
+npm run setup
+```
 
-   * Install the rest of the missing dependencies using:
+### Development
 
-     ```sh
-     bundle add jekyll-paginate
-     bundle add jekyll-sitemap
-     bundle add webrick # use this if ruby 3.0 or greater is installed
-     ```
+```sh
+npm start          # serve at http://127.0.0.1:4000 with live-reload
+npm run lint       # run all linters (JS, CSS, Markdown)
+npm run format     # auto-format with Prettier
+bundle update      # update Ruby gems
+```
 
-3. Serve the website (`localhost:4000` by default):
+To test from a mobile device on the same network:
 
-   ```sh
-   bundle exec jekyll serve  # alternatively, npm start
-   ```
+```sh
+bundle exec jekyll serve --host 0.0.0.0
+```
 
-   Alternatively, you can serve the website to your whole private network using
-   the following command (very useful if you want to test your site from a
-   mobile browser, port is set to `4000` by default):
-
-   ```sh
-   bundle exec jekyll serve --host 0.0.0.0
-   ```
-
-   Then `ipconfig` from the computer your serving and browse from your mobile
-   to `http://ip address:port`, depending on your local network,
-   e.g: `http://192.168.XXX.YYY:4000`.
-
-4. Update your gems frequently:
-
-   ```sh
-   bundle update
-   ```
+Then `ipconfig`, find your local IP, and browse to `http://<ip>:4000` from your
+device.
 
 ## Configuration
 
-To start customizing your own blog simply start by modifying the file in
-general: `_config.yml`.
+Customize the site by editing `_config.yml`:
 
-```md
-### Site settings
+```yaml
 title: Ronel Zapata personal website
 SEOTitle: Ronel Zapata personal website | RZ Blog
-description: "Page description"
-
-### SNS settings
+description: 'Page description'
 github_username: ronelzb
-
-### Build settings
 paginate: 10
 ```
 
-You can also check the whole list of configuration attributes at:
-[Jekyll - Official Site](http://jekyllrb.com/).
-
-## Implementation
-
-If you have [jekyll](http://jekyllcn.com/) installed, you only need to enter it
-on the command line or you can enter a preview theme in your local browser, and
-changes to the theme can be shown in real time (you'll need to refresh your
-browser for each change made). `jekyll serve` `jekyll s`
-`http://127.0.0.1:4000/`.
+Full reference: [Jekyll configuration docs](https://jekyllrb.com/docs/configuration/).

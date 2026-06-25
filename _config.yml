@@ -39,8 +39,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
-  - MODERNIZATION.md
-  - docs/
+  - scripts/
   - assets/images/originals/
 
 # from PR#40, to support local preview for Jekyll 3.0
