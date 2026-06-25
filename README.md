@@ -3,7 +3,7 @@
 ![version](https://img.shields.io/badge/Version-Prod-brightgreen)
 ![release](https://img.shields.io/badge/Release-1.0.1-blue)
 ![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/master/LICENSE)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/main/LICENSE)
 
 This is my very first blog modified from
 [Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io). A big
