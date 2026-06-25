@@ -8,11 +8,15 @@ tags: [algorithms, arrays, breadth-first-search, dijkstra, dynamic-programming, 
 excerpt_separator: <!--more-->
 ---
 
-![Grokking Algorithms](/assets/images/grokking-algorithms.jpg)
+![Grokking Algorithms book cover](/assets/images/grokking-algorithms.jpg)
 
-*[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="_blank"}* is a fully illustrated, friendly guide that teaches you how to apply common algorithms to the practical problems you face every day as a programmer.
+*[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="_blank"}*
+is a fully illustrated, friendly guide that teaches you how to apply common
+algorithms to the practical problems you face every day as a programmer.
 <!--more-->
-This book is a great introduction to Python programming and algorithms in general. We'll start with basics like sorting and searching then move on to more complex problems.
+This book is a great introduction to Python programming and algorithms in
+general. We'll start with basics like sorting and searching then move on to
+more complex problems.
 
 ## Contents
 
@@ -30,6 +34,8 @@ This book is a great introduction to Python programming and algorithms in genera
 
 ## Dependencies
 
-This repo was created using Python 3 and the [PyCharm](https://www.jetbrains.com/pycharm/) IDE.
+This repo was created using Python 3 and the
+[PyCharm](https://www.jetbrains.com/pycharm/) IDE.
 
-Check the project [here](https://github.com/ronelzb/grokking-algorithms/){:target="_blank"}.
+Check the
+[grokking-algorithms repository](https://github.com/ronelzb/grokking-algorithms/){:target="_blank"}.

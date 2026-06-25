@@ -15,8 +15,8 @@ const HOSTNAME_WHITELIST = [
 
 // The Util Function to hack URLs of intercepted requests
 const getFixedUrl = (req) => {
-  var now = Date.now();
-  url = new URL(req.url);
+  const now = Date.now();
+  const url = new URL(req.url);
 
   // 1. fixed http URL
   // Just keep syncing with location.protocol 
@@ -60,7 +60,7 @@ const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathna
 // `${url}/` would mis-add "/" in the end of query, so we use URL object.
 // P.P.S. Always trust url.pathname instead of the whole url string.
 const getRedirectUrl = (req) => {
-  url = new URL(req.url);
+  const url = new URL(req.url);
   url.pathname += "/";
   return url.href;
 };
@@ -130,16 +130,16 @@ self.addEventListener('fetch', event => {
     // If there’s nothing in cache, wait for the fetch. 
     // If neither yields a response, return offline pages.
     event.respondWith(
-      Promise.race([fetched.catch(_ => cached), cached])
+      Promise.race([fetched.catch(() => cached), cached])
         .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
+        .catch(() => caches.match('offline.html'))
     );
 
     // Update the cache with the version we fetched (only for ok status)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
         .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => {/* eat any errors */})
+        .catch(() => {/* eat any errors */})
     );
   }
 });

@@ -19,7 +19,7 @@ post-date: true
         {% assign gh_repo =  gh_split[1]  %}
 
         <div class="mb-3 text-center">
-          {% if page.gh-badge.size > 0 %}
+          {% if page.gh-badge.size != 0 %}
             {% for badge in page.gh-badge %}
               {% case badge %}
                 {% when 'star'%}
@@ -31,7 +31,7 @@ post-date: true
                   <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=watch&v=2&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
                   </span>
                   {% when 'fork'%}
-                  <span class="d-block d-md-inline"></span>
+                  <span class="d-block d-md-inline">
                   <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=fork&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
                   </span>
                   {% when 'follow'%}
@@ -48,7 +48,7 @@ post-date: true
         {{ content }}
       </article>
 
-      {% if page.tags and page.tags.size > 0 %}
+      {% if page.tags and page.tags.size != 0 %}
       <p class="blog-tags">
         Tags:
         {% for tag in page.tags %}
