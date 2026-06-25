@@ -2,7 +2,7 @@
 layout: page
 about-title: "Ronel Zapata"
 about-subtitle: "Hey, I'm"
-header-img: assets/images/image-avatar.jpg
+header-img: assets/images/image-avatar.webp
 large-header: true
 about-me: "Hi, my name is Ronel José Zapata Beltrán. I'm a full-stack developer with 10+ years working on data analytics and business intelligence software solutions delivering impactful, robust and reliable engineering products in the oil and energy field, working in projects with companies of all sizes and shape.
 <br /><br />
@@ -106,72 +106,71 @@ timeline:
 
 {% if page.about-me %}
 <section class="about-me bg-light py-4">
-    <div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center">About me</h2>
+        <p>{{ page.about-me }}</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <h4 class="border-bottom border-secondary">Fun Facts</h4>
+        <ul class="facts">
+          {% for fact in page.facts %}
+          <li>{{ fact }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-12 col-md-6">
+        <h4 class="border-bottom border-secondary">Skill set</h4>
+        <ul class="skills text-center text-md-start">
+          {% for skill in page.skills%}
+          <li>
+            <span class="skill text-center text-white fw-bold rounded d-inline-block px-2 py-1">
+              {{ skill.name }}
+            </span>
+            {% for item in skill.rating %}
+            <i class="{{ item }} align-middle text-secondary skill-rating"></i>
+            {% endfor %}
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="text-center text-md-start mt-0 mt-md-5 resume">
+          <a href="{{ page.resume }}" target="_blank"
+            >View Resume<i class="fas fa-file-pdf fa-lg ms-3 align-middle"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %} {% if page.current-projects %}
+<section class="current-projects bg-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Current Projects</h1>
+
         <div class="row">
-            <div class="col-12">
-                <h2 class="text-center">About me</h2>
-                <p class="text-justify">
-                    {{ page.about-me }}
-                </p>
-            </div>
-            <div class="col-12 col-md-6">
-              <h4 class="border-bottom border-secondary">Fun Facts</h4>
-              <ul class="facts text-justify">
-                {% for fact in page.facts %}
-                <li>{{ fact }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-            <div class="col-12 col-md-6">
-              <h4 class="border-bottom border-secondary">Skill set</h4>
-              <ul class="skills text-center text-md-left">
-                {% for skill in page.skills%}
-                <li>
-                  <span class="skill text-center text-white font-weight-bold rounded d-inline-block px-2 py-1">
-                    {{ skill.name }}
-                  </span>
-                  {% for item in skill.rating %}
-                  <i class="{{ item }} align-middle text-secondary skill-rating"></i>
-                  {% endfor %}
-                </li>
-                {% endfor %}
-              </ul>
-              <div class="text-center text-md-left mt-0 mt-md-5 resume">
-                <a href="{{ page.resume }}" target="_blank">View Resume<i class="fas fa-file-pdf fa-lg ml-3 align-middle"></i></a>
+          {% for project in page.current-projects %}
+          <div class="col-12 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  {% if project.url %}
+                  <a href="{{ project.url }}" target="_blank">{{ project.title }}</a>
+                  {% else %} {{ project.title }} {% endif %}
+                </h4>
+                {% if project.text %}
+                <p class="card-text">{{ project.text }}</p>
+                {% endif %}
               </div>
             </div>
+          </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
-</section>
-{% endif %}
-{% if page.current-projects %}
-<section class="current-projects bg-light py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Current Projects</h1>
-
-                <div class="row">
-                    {% for project in page.current-projects %}
-                    <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    {% if project.url %}
-                                    <a href="{{ project.url }}" target="_blank">{{ project.title }}</a>
-                                    {% else %}
-                                    {{ project.title }}
-                                    {% endif %}
-                                </h4>
-                                {% if project.text %}<p class="card-text">{{ project.text }}</p>{% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 {% endif %}
 <section class="timeline mb-3">
@@ -183,7 +182,9 @@ timeline:
           {% for event in page.timeline %}
           <li class="my-4 position-relative {{ event.position }}">
             <p class="p-3 rounded text-center">{{ event.text }}</p>
-            <span class="position-absolute font-weight-bold text-info">{{ event.date | date: "%B %Y" }}</span>
+            <span class="position-absolute fw-bold text-info"
+              >{{ event.date | date: "%B %Y" }}</span
+            >
           </li>
           {% endfor %}
         </ul>

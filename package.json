@@ -10,6 +10,8 @@
     "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "start": "bundle exec jekyll serve --livereload",
+    "build": "bundle exec jekyll build",
     "prepare": "husky"
   },
   "lint-staged": {

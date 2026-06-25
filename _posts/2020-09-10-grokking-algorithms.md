@@ -4,16 +4,32 @@ title: Grokking Algorithms
 subtitle: Python algorithm exercises for programmers.
 gh-repo: ronelzb/grokking-algorithms
 gh-badge: [watch, star, fork, follow]
-tags: [algorithms, arrays, breadth-first-search, dijkstra, dynamic-programming, k-nearest-neighbors, greedy, hashtable, python, quicksort, recursion, selection-sort]
+tags:
+  [
+    algorithms,
+    arrays,
+    breadth-first-search,
+    dijkstra,
+    dynamic-programming,
+    k-nearest-neighbors,
+    greedy,
+    hashtable,
+    python,
+    quicksort,
+    recursion,
+    selection-sort,
+  ]
 excerpt_separator: <!--more-->
 ---
 
-![Grokking Algorithms book cover](/assets/images/grokking-algorithms.jpg)
+![Grokking Algorithms book cover](/assets/images/grokking-algorithms.webp)
 
-*[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="_blank"}*
+_[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="\_blank"}_
 is a fully illustrated, friendly guide that teaches you how to apply common
 algorithms to the practical problems you face every day as a programmer.
+
 <!--more-->
+
 This book is a great introduction to Python programming and algorithms in
 general. We'll start with basics like sorting and searching then move on to
 more complex problems.
@@ -38,4 +54,4 @@ This repo was created using Python 3 and the
 [PyCharm](https://www.jetbrains.com/pycharm/) IDE.
 
 Check the
-[grokking-algorithms repository](https://github.com/ronelzb/grokking-algorithms/){:target="_blank"}.
+[grokking-algorithms repository](https://github.com/ronelzb/grokking-algorithms/){:target="\_blank"}.
