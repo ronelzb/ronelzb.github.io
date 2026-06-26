@@ -1,0 +1,25 @@
+footer {
+  background-color: #eaeaea;
+  border-top: 1px #eaeaea solid;
+  font-size: 0.875rem;
+  padding: 1.875rem 0;
+}
+
+footer .list-inline {
+  margin: 0 0 1.875rem;
+  padding: 0;
+}
+
+@media only screen and (width >= 768px) {
+  footer {
+    padding: 3.125rem 0;
+  }
+
+  footer .footer-links {
+    font-size: 1.125rem;
+  }
+
+  footer .copyright {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,119 @@
+.timeline ul {
+  border-right: 7px solid #f1cf63;
+  list-style-type: none;
+}
+
+.timeline .left::after {
+  background-color: #e67e22;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  content: '';
+  float: left;
+  height: 10px;
+  position: absolute;
+  right: -9px;
+  top: calc(50% - 5px);
+  width: 10px;
+}
+
+.timeline .right {
+  left: calc(100% + 7px);
+}
+
+.timeline .right::before {
+  background: #e67e22;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  content: '';
+  float: right;
+  height: 10px;
+  left: -9px;
+  position: absolute;
+  top: calc(50% - 5px);
+  width: 10px;
+}
+
+.timeline li p {
+  color: #2c3e50;
+}
+
+.timeline .left p {
+  background-color: #dff0d8;
+  box-shadow: 0 0 2px #79a553;
+  margin: 1em 14px 1em 0;
+}
+
+.timeline .left p::after {
+  border-color: transparent #dff0d8;
+  border-style: solid;
+  border-width: 22px 0 22px 16px;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 22px);
+  width: 12px;
+}
+
+.timeline .right p {
+  background-color: #d9edf7;
+  box-shadow: 0 0 2px #4c8c99;
+  margin: 1em 0 1em 14px;
+}
+
+.timeline .right p::before {
+  border-color: transparent #d9edf7;
+  border-style: solid;
+  border-width: 22px 16px 22px 0;
+  content: '';
+  display: block;
+  left: 0;
+  position: absolute;
+  top: calc(50% - 22px);
+  width: 0;
+}
+
+.timeline li span {
+  top: calc(50% - 12px);
+}
+
+.timeline .left span {
+  left: 100%;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.timeline .right span {
+  margin-right: 20px;
+  right: 100%;
+  white-space: nowrap;
+}
+
+.facts li {
+  line-height: 32px;
+}
+
+.facts li:not(:last-child),
+.skills li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.skills {
+  list-style-type: none;
+  padding-inline-end: 40px;
+}
+
+.skill {
+  background-color: #ffb74d;
+  margin: auto 0.5rem auto auto;
+  width: 8rem;
+}
+
+.skill-rating {
+  line-height: 1;
+}
+
+.resume {
+  font-size: 1.5rem;
+  padding: 0 40px;
+}

@@ -1,0 +1,92 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/page-header.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  headerImg?: string;
+  headerGradient?: boolean;
+  headerBaseColor?: string;
+  headerGradientColor?: string;
+  largeHeader?: boolean;
+  aboutTitle?: string;
+  aboutSubtitle?: string;
+  postDate?: Date;
+  ghRepo?: string;
+  showGhButton?: boolean;
+  ghButtonContent?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  headerImg,
+  headerGradient = false,
+  headerBaseColor = 'rgb(21,153,87)',
+  headerGradientColor = 'linear-gradient(120deg, rgb(21,87,153), rgb(21,153,87))',
+  largeHeader = false,
+  aboutTitle,
+  aboutSubtitle,
+  postDate,
+  ghRepo,
+  showGhButton = false,
+  ghButtonContent = 'View on GitHub',
+} = Astro.props;
+
+const headerStyle = headerGradient
+  ? `background-image: ${headerGradientColor}; background-color: ${headerBaseColor};`
+  : headerImg
+    ? `background-image: url('${headerImg}');`
+    : `background-image: url('/images/main-banner.webp');`;
+
+const postDateStr = postDate?.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <header class="page-header" style={headerStyle}>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-10 offset-lg-1">
+          <div class:list={['title text-center text-shadow', { 'title-large': largeHeader }]}>
+            {
+              aboutTitle ? (
+                <>
+                  {aboutSubtitle && (
+                    <h4>
+                      <i>{aboutSubtitle}</i>
+                    </h4>
+                  )}
+                  <h1 class="about-title">{aboutTitle}</h1>
+                </>
+              ) : (
+                <>
+                  <h1>{title}</h1>
+                  {description && <h4 set:html={description} />}
+                  {postDateStr && <p>Posted on {postDateStr}</p>}
+                  {showGhButton && ghRepo && (
+                    <a
+                      href={`https://github.com/${ghRepo}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-lg btn-outline-success"
+                    >
+                      {ghButtonContent}
+                    </a>
+                  )}
+                </>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <slot />
+</BaseLayout>

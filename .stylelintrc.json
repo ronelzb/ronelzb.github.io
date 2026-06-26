@@ -1,4 +1,3 @@
 {
-  "extends": ["stylelint-config-standard"],
-  "ignoreFiles": ["_site/**", ".jekyll-cache/**", "assets/css/syntax.css"]
+  "extends": ["stylelint-config-standard"]
 }

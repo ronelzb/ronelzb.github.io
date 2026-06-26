@@ -1,0 +1,99 @@
+.main-content .blog-post p > img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0;
+}
+
+.main-content .blog-post h1,
+.blog-post h2,
+.blog-post h3,
+.blog-post h4,
+.blog-post h5,
+.blog-post h6 {
+  color: #369;
+}
+
+.post-preview {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-preview .post-title {
+  color: #369;
+}
+
+.post-preview .post-subtitle {
+  font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300;
+}
+
+.post-preview .post-meta {
+  color: #5e9516;
+  margin: 0 0 0.625rem;
+}
+
+.post-preview .post-read-more {
+  font-weight: 800;
+}
+
+.blog-tags {
+  font-size: 0.9375rem;
+}
+
+.blog-tags,
+.blog-tags a {
+  color: #808080;
+}
+
+.pagination > .page-item > .page-link {
+  color: #404040;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.pagination > .page-item.next {
+  margin-left: auto;
+}
+
+table > thead > tr > th {
+  color: #606c71;
+}
+
+table.table-display-block {
+  border: unset;
+  display: block;
+}
+
+code {
+  color: #444;
+  white-space: nowrap;
+}
+
+code,
+tt {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 0 2px;
+  padding: 0 5px;
+}
+
+@media only screen and (width >= 768px) {
+  .sidebar-container {
+    padding-left: 5%;
+  }
+
+  .post-preview .post-title {
+    font-size: 2.25rem;
+  }
+
+  .pagination > .page-item > .page-link {
+    padding: 0.9375rem 1.5625rem;
+  }
+}

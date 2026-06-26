@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PageLayout from './PageLayout.astro';
+import '../styles/posts.css';
+
+interface Props {
+  post: CollectionEntry<'blog'>['data'];
+  prevPost?: { title: string; slug: string } | null;
+  nextPost?: { title: string; slug: string } | null;
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { title, subtitle, date, tags, 'gh-repo': ghRepo, 'gh-badge': ghBadge } = post;
+
+const [ghUser, ghRepoName] = ghRepo ? ghRepo.split('/') : [null, null];
+
+const BADGE_URLS: Record<string, string> =
+  ghUser && ghRepoName
+    ? {
+        star: `https://ghbtns.com/github-btn.html?user=${ghUser}&repo=${ghRepoName}&type=star&count=true`,
+        watch: `https://ghbtns.com/github-btn.html?user=${ghUser}&repo=${ghRepoName}&type=watch&v=2&count=true`,
+        fork: `https://ghbtns.com/github-btn.html?user=${ghUser}&repo=${ghRepoName}&type=fork&count=true`,
+        follow: `https://ghbtns.com/github-btn.html?user=${ghUser}&type=follow&count=true`,
+      }
+    : {};
+---
+
+<PageLayout
+  title={title}
+  description={subtitle}
+  headerGradient={true}
+  postDate={date}
+  ghRepo={ghRepo}
+  showGhButton={!!ghRepo}
+>
+  <section class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 main-content mt-2 mt-md-3">
+          {
+            ghRepo && ghBadge.length > 0 && (
+              <div class="mb-3">
+                {ghBadge.map(
+                  (badge: string) =>
+                    BADGE_URLS[badge] && (
+                      <iframe
+                        src={BADGE_URLS[badge]}
+                        style="border:none;"
+                        width={badge === 'follow' ? '150' : '110'}
+                        height="20"
+                        title={`GitHub ${badge}`}
+                      />
+                    ),
+                )}
+              </div>
+            )
+          }
+
+          <article role="main" class="blog-post">
+            <slot />
+          </article>
+
+          {
+            tags.length > 0 && (
+              <p class="blog-tags mt-3">
+                Tags:{' '}
+                {tags.map((tag: string, i: number) => (
+                  <>
+                    <a href={`/tags#${tag}`}>{tag}</a>
+                    {i < tags.length - 1 && ' '}
+                  </>
+                ))}
+              </p>
+            )
+          }
+
+          <ul class="pagination blog-pager mt-4 p-0">
+            {
+              prevPost && (
+                <li class="page-item previous">
+                  <a class="page-link" href={`/${prevPost.slug}`} title={prevPost.title}>
+                    &larr; Previous Post
+                  </a>
+                </li>
+              )
+            }
+            {
+              nextPost && (
+                <li class="page-item next">
+                  <a class="page-link" href={`/${nextPost.slug}`} title={nextPost.title}>
+                    Next Post &rarr;
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

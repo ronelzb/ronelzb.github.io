@@ -1,0 +1,37 @@
+.notfound-container {
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, 0);
+}
+
+.notfound {
+  left: 50%;
+  max-width: 410px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notfound-container .notfound h1 {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 160px;
+  font-weight: 400;
+}
+
+.notfound-container .notfound h1.offline-header {
+  font-size: 90px;
+}
+
+.notfound-container .notfound p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+@media only screen and (width >= 768px) {
+  .notfound-container .notfound h1 {
+    font-size: 250px;
+  }
+}

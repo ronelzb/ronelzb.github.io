@@ -1,0 +1,49 @@
+.navbar {
+  border: none;
+  transition:
+    background-color 0.4s,
+    padding 0.4s;
+}
+
+.navbar-brand {
+  padding: unset;
+}
+
+.navbar-color-ghost {
+  background: rgb(0 0 0 / 20%);
+  text-shadow: 2px 2px 8px #000;
+}
+
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link {
+  color: rgb(255 255 255 / 85%);
+}
+
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link:hover,
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link.active {
+  color: #fff;
+}
+
+.navbar.scrolled,
+.navbar.menu-open {
+  background: var(--bs-light) !important;
+  text-shadow: none;
+}
+
+@media only screen and (width <= 767px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open::after {
+    background: rgb(0 0 0 / 40%);
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}

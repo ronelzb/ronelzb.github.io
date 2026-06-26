@@ -1,0 +1,56 @@
+---
+import { SITE, NAV_PAGES } from '../config';
+import '../styles/navbar.css';
+---
+
+<nav
+  class="navbar navbar-expand-md fixed-top navbar-color-ghost navbar-dark py-4"
+  role="navigation"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <img
+        src="/images/header-logo.webp"
+        alt={SITE.title}
+        title="Home"
+        height="40"
+        loading="lazy"
+        decoding="async"
+      />
+      <span class="d-none d-md-inline">{SITE.title}</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#header-collapsible-navbar"
+      aria-controls="header-collapsible-navbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-collapsible-navbar">
+      <ul class="navbar-nav ms-auto text-end">
+        {
+          NAV_PAGES.map((page) => (
+            <li class="nav-item">
+              <a
+                class={`nav-link${Astro.url.pathname.startsWith(page.url) ? ' active' : ''}`}
+                href={page.url}
+              >
+                {page.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import './navbar';
+</script>

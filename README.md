@@ -1,63 +1,77 @@
 # Ronel Zapata Blog
 
 ![version](https://img.shields.io/badge/Version-Prod-brightgreen)
-![release](https://img.shields.io/badge/Release-1.0.1-blue)
-![language](https://img.shields.io/badge/Language-HTML,Ruby,JavaScript-brightgreen)
+![release](https://img.shields.io/badge/Release-2.0.0-blue)
+![language](https://img.shields.io/badge/Language-TypeScript,Astro-brightgreen)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ronelzb/ronelzb.github.io/blob/main/LICENSE)
 
-This is my very first blog modified from
-[Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io). A big
-shoutout to my co-worker and friend Andres Segura which his blog template
-helped building this one, you can check his
-[ansegura7 blog](https://github.com/ansegura7/ansegura7.github.io). To Matt
-Carmody for the great front-end ideas that led me to a very robust look-and-feel
-and responsive oriented page. And last but not least, my wife Karla for being
-my QA Tester.
+Personal portfolio and blog built with [Astro 5](https://astro.build/) and TypeScript.
+Originally adapted from
+[Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io), with
+inspiration from [ansegura7](https://github.com/ansegura7/ansegura7.github.io).
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Ruby](https://rubyinstaller.org/) (4.0+ recommended) with the DevKit
-- [Node.js](https://nodejs.org/) (20+) and npm
+- [Node.js](https://nodejs.org/) (24+) and npm
 
 ### First-time setup
-
-Run the setup script — it checks prerequisites, installs all Ruby gems and Node
-packages, and runs a lint check to confirm everything is wired up correctly:
 
 ```sh
 npm run setup
 ```
 
+Checks prerequisites, copies `.env.example` → `.env.local`, installs packages,
+and runs a lint check.
+
 ### Development
 
 ```sh
-npm start          # serve at http://127.0.0.1:4000 with live-reload
-npm run lint       # run all linters (JS, CSS, Markdown)
+npm run dev        # serve at http://localhost:4321 with live-reload
+npm run build      # production build → dist/
+npm run preview    # preview the production build locally
+npm run lint       # typecheck + JS + CSS + Markdown linters
 npm run format     # auto-format with Prettier
-bundle update      # update Ruby gems
 ```
 
-To test from a mobile device on the same network:
+To test from a mobile device on the same network, run:
 
 ```sh
-bundle exec jekyll serve --host 0.0.0.0
+npm run dev -- --host
 ```
 
-Then `ipconfig`, find your local IP, and browse to `http://<ip>:4000` from your
-device.
+Then find your local IP with `ipconfig` and browse to `http://<ip>:4321`.
 
 ## Configuration
 
-Customize the site by editing `_config.yml`:
+Site metadata lives in `src/config.ts`. The `SITE_URL` environment variable must
+be set at build time for canonical URLs, the sitemap, and the RSS feed to work:
 
-```yaml
-title: Ronel Zapata personal website
-SEOTitle: Ronel Zapata personal website | RZ Blog
-description: 'Page description'
-github_username: ronelzb
-paginate: 10
+```sh
+SITE_URL=https://ronelzb.github.io npm run build
 ```
 
-Full reference: [Jekyll configuration docs](https://jekyllrb.com/docs/configuration/).
+In CI this is provided automatically by the GitHub Pages `configure-pages` action.
+
+## Tests
+
+Tests run with [Vitest](https://vitest.dev/).
+
+```sh
+npm test              # run all tests once
+npm run test:watch    # re-run on file changes
+npm run test:coverage # coverage report
+```
+
+### What is tested
+
+| Area              | Examples                                              |
+| ----------------- | ----------------------------------------------------- |
+| Content schema    | Frontmatter required fields, date coercion, tag types |
+| Utility functions | Slug rewrite, excerpt truncation, tag deduplication   |
+| Config            | `SITE` constant completeness, `NAV_PAGES` shape       |
+
+Tests live in `tests/` at the repo root. New blog posts are validated
+automatically against the content schema at build time by Astro's content
+collections — no separate test needed for frontmatter correctness.

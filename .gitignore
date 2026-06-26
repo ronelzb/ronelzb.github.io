@@ -28,12 +28,6 @@ Temporary Items
 
 # End of https://www.gitignore.io/api/macos
 
-# Jekyll
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-
 # VS Code
 .vscode/
 
@@ -46,3 +40,11 @@ _site/
 
 # Node
 node_modules/
+
+# Astro
+.astro/
+dist/
+
+# Local env overrides with secrets — never commit
+.env.local
+.env.*.local

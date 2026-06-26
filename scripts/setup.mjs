@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import { spawnSync, execSync } from 'child_process';
+import { existsSync, copyFileSync } from 'fs';
+import { join } from 'path';
 import { platform, arch } from 'os';
 
 const os = platform();
-const isWindows = os === 'win32';
 
-const cyan = (s) => `\x1b[36m${s}\x1b[0m`;
+const cyan  = (s) => `\x1b[36m${s}\x1b[0m`;
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
-const red = (s) => `\x1b[31m${s}\x1b[0m`;
+const red   = (s) => `\x1b[31m${s}\x1b[0m`;
+const warn  = (s) => `\x1b[33m${s}\x1b[0m`;
 
 function step(msg) { console.log(`\n${cyan(`==> ${msg}`)}`); }
 function ok(msg)   { console.log(green(`    OK  ${msg}`)); }
@@ -22,7 +24,7 @@ function run(cmd) {
 }
 
 function which(cmd) {
-  const result = spawnSync(isWindows ? 'where' : 'which', [cmd], { stdio: 'pipe' });
+  const result = spawnSync(os === 'win32' ? 'where' : 'which', [cmd], { stdio: 'pipe' });
   return result.status === 0;
 }
 
@@ -34,37 +36,33 @@ function ver(cmd) {
   }
 }
 
-const RUBY_HINTS = {
-  win32:  'Install from https://rubyinstaller.org/ (include the DevKit).',
-  darwin: 'Install via Homebrew: brew install rbenv && rbenv install <version>',
-  linux:  'Install via rbenv, asdf, or: sudo apt install ruby-full  (Debian/Ubuntu)',
-};
-
 console.log(`\nronelzb.github.io — first-time setup  [${os}/${arch()}]`);
 
 // --- Prerequisites ---
 
 step('Checking prerequisites');
 
-if (!which('ruby')) fail(`Ruby not found. ${RUBY_HINTS[os] ?? RUBY_HINTS.linux}`);
-ok(`Ruby:    ${ver('ruby')}`);
-
-if (!which('bundle')) fail('Bundler not found. Run: gem install bundler');
-try {
-  ok(`Bundler: ${execSync('bundle -v', { stdio: 'pipe' }).toString().trim()}`);
-} catch { fail('Could not determine Bundler version.'); }
-
 if (!which('node')) fail('Node.js not found. Install from https://nodejs.org/ and re-run.');
-ok(`Node:    ${ver('node')}`);
+ok(`Node:  ${ver('node')}`);
 
 if (!which('npm')) fail('npm not found. Reinstall Node.js and re-run.');
-ok(`npm:     ${ver('npm')}`);
+ok(`npm:   ${ver('npm')}`);
 
-// --- Ruby gems ---
+// --- Local env ---
 
-step('Installing Ruby gems  (bundle install)');
-run('bundle install');
-ok('Gems installed');
+step('Setting up local environment');
+
+const root       = process.cwd();
+const envExample = join(root, '.env.example');
+const envLocal   = join(root, '.env.local');
+
+if (!existsSync(envLocal)) {
+  if (!existsSync(envExample)) fail('.env.example not found — cannot create .env.local.');
+  copyFileSync(envExample, envLocal);
+  ok('.env.local created from .env.example');
+} else {
+  console.log(warn(`    --  .env.local already exists, skipping`));
+}
 
 // --- Node packages ---
 
@@ -80,4 +78,4 @@ ok('Lint passed');
 
 // --- Done ---
 
-console.log(`\nSetup complete. Run \x1b[33mnpm start\x1b[0m to launch the site at http://127.0.0.1:4000/\n`);
+console.log(`\nSetup complete. Run \x1b[33mnpm run dev\x1b[0m to launch the site at http://localhost:4321/\n`);
