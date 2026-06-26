@@ -7,7 +7,7 @@ gh-badge: [watch, star, fork, follow]
 tags: [algorithms, arrays, exercises, graphs, java, lists, queues, stacks, strings, trees]
 ---
 
-![Cracking the Interview Code book cover](/assets/images/cracking-the-interview-code.webp)
+![Cracking the Interview Code book cover](../../images/cracking-the-interview-code.webp)
 
 First repo made to sharpen algorithm code exercises using Java and understand
 how GitHub versioning works. Also to practice algorithms from one of the best

@@ -21,9 +21,9 @@ tags:
   ]
 ---
 
-![Grokking Algorithms book cover](/assets/images/grokking-algorithms.webp)
+![Grokking Algorithms book cover](../../images/grokking-algorithms.webp)
 
-_[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms){:target="\_blank"}_
+_[Grokking Algorithms](https://www.manning.com/books/grokking-algorithms)_
 is a fully illustrated, friendly guide that teaches you how to apply common
 algorithms to the practical problems you face every day as a programmer.
 
@@ -53,4 +53,4 @@ This repo was created using Python 3 and the
 [PyCharm](https://www.jetbrains.com/pycharm/) IDE.
 
 Check the
-[grokking-algorithms repository](https://github.com/ronelzb/grokking-algorithms/){:target="\_blank"}.
+[grokking-algorithms repository](https://github.com/ronelzb/grokking-algorithms/).

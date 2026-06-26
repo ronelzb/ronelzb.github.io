@@ -32,4 +32,4 @@ To view the page directly in the browser:
 - Click on `More setting` at the Print settings panel.
 - Select `None` or `Minimum` margins and check `Background graphics`.
 
-![How to print page to PDF](/assets/images/how-to-print-pdf.gif)
+![How to print page to PDF](../../images/how-to-print-pdf.gif)
