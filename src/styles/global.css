@@ -32,6 +32,10 @@ body {
   opacity: 0.76;
 }
 
+[data-bs-theme='dark'] img[src*='codecogs'] {
+  filter: invert(1);
+}
+
 a {
   color: var(--color-accent);
 }

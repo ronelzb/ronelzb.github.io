@@ -72,14 +72,35 @@ const socials = [
           {year}
           &nbsp;|&nbsp;
           <a href={SITE.ghRepo} target="_blank" rel="noopener noreferrer">Theme on GitHub</a>
-          &nbsp; &nbsp; &nbsp;
-          <iframe
-            style="margin-bottom:-5px; border:none;"
-            width="90"
-            height="20"
-            src={`https://ghbtns.com/github-btn.html?user=${SITE.social.github}&repo=${SITE.social.github}.github.io&type=star&count=true`}
-            loading="eager"
-            title="GitHub stars"></iframe>
+          &nbsp;
+          <a
+            href={SITE.ghRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-sm btn-outline-secondary gh-badge-btn"
+            data-gh-repo={`${SITE.social.github}/${SITE.social.github}.github.io`}
+            data-gh-type="star"
+          >
+            <i class="fa-solid fa-star fa-fw" aria-hidden="true"></i>
+            {' '}Star<span class="gh-badge-count"></span>
+          </a>
+          <script is:inline>
+            (function () {
+              var btn = document.querySelector('footer .gh-badge-btn[data-gh-type="star"]');
+              if (!btn) return;
+              fetch('https://api.github.com/repos/' + btn.getAttribute('data-gh-repo'))
+                .then(function (r) {
+                  return r.json();
+                })
+                .then(function (d) {
+                  if (d.stargazers_count == null) return;
+                  var span = btn.querySelector('.gh-badge-count');
+                  if (span)
+                    span.textContent = ' (' + Number(d.stargazers_count).toLocaleString() + ')';
+                })
+                .catch(function () {});
+            })();
+          </script>
         </p>
       </div>
     </div>

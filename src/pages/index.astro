@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
 import '../styles/posts.css';
 import avatarImage from '../images/image-avatar.webp';
+import mainBanner from '../images/main-banner.webp';
 
 const PAGE_SIZE = 5;
 
@@ -37,7 +38,7 @@ const SIDEBAR_QUOTE =
 <PageLayout
   title="Ronel Zapata"
   description="Senior Software Engineer, coding exercises and projects on GitHub"
-  headerImg="/images/main-banner.webp"
+  headerImg={mainBanner}
 >
   <section class="main-container">
     <div class="container">

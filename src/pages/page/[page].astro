@@ -2,7 +2,10 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import PageLayout from '../../layouts/PageLayout.astro';
+import avatarImage from '../../images/image-avatar.webp';
+import mainBanner from '../../images/main-banner.webp';
 import '../../styles/posts.css';
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -41,7 +44,7 @@ const prevHref = page.currentPage === 2 ? '/' : page.url.prev;
 <PageLayout
   title="Ronel Zapata"
   description="Senior Software Engineer, coding exercises and projects on GitHub"
-  headerImg="/images/main-banner.webp"
+  headerImg={mainBanner}
 >
   <section class="main-container">
     <div class="container">
@@ -97,12 +100,7 @@ const prevHref = page.currentPage === 2 ? '/' : page.url.prev;
 
         <div class="col-12 col-md-4 sidebar-container mt-2 mt-md-3">
           <div class="short-about">
-            <img
-              src="/images/image-avatar.webp"
-              alt="Ronel Zapata"
-              loading="lazy"
-              decoding="async"
-            />
+            <Image src={avatarImage} alt="Ronel Zapata" loading="lazy" />
             <p>{SIDEBAR_QUOTE}</p>
             <hr />
           </div>

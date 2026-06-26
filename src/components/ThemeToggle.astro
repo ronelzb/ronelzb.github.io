@@ -45,6 +45,8 @@
         btn.addEventListener('click', function () {
           var next = root.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
           root.setAttribute('data-bs-theme', next);
+          root.setAttribute('data-theme', next);
+          root.classList.toggle('dark', next === 'dark');
           try {
             localStorage.setItem('theme', next);
           } catch (_) {}

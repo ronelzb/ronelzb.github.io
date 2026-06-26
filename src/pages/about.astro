@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import '../styles/about.css';
+import avatarImage from '../images/image-avatar.webp';
 
 const aboutMe =
   "Hi, my name is Ronel José Zapata Beltrán. I'm a Senior Software Engineer with 17+ years working on data analytics " +
@@ -142,7 +143,7 @@ function starIcon(val: true | false | 'half'): string {
   title="About"
   aboutTitle="Ronel Zapata"
   aboutSubtitle="Hey, I'm"
-  headerImg="/images/image-avatar.webp"
+  headerImg={avatarImage}
   largeHeader={true}
 >
   <section class="about-me bg-light py-4">

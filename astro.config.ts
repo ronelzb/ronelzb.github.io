@@ -1,6 +1,33 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import { unified } from '@astrojs/markdown-remark';
+import type { Root, Element } from 'hast';
+
+// Astro's markdown pipeline defaults all content-collection images to loading="lazy" via
+// internal.js (`resolvedOptions.loading ??= "lazy"`). This runs AFTER custom rehype plugins,
+// but BEFORE rehype-images.js serialises node.properties into the __ASTRO_IMAGE_ JSON that is
+// passed to getImage(). Setting loading="eager" here wins because `??=` only assigns when the
+// value is null/undefined — so an explicit "eager" from node.properties is preserved.
+// Fixes: Astro Audit "above-fold lazy image" + Chrome/Edge "[Intervention] Images loaded lazily
+// and replaced with placeholders" that fire for book-cover and GIF images at the top of posts.
+function rehypeEagerImages() {
+  return function (tree: Root) {
+    function walk(node: Root | Element) {
+      if (node.type === 'element' && (node as Element).tagName === 'img') {
+        const el = node as Element;
+        if (!el.properties) el.properties = {};
+        el.properties['loading'] = 'eager';
+      }
+      if ('children' in node) {
+        for (const child of node.children) {
+          walk(child as Root | Element);
+        }
+      }
+    }
+    walk(tree);
+  };
+}
 
 export default defineConfig({
   site: process.env.SITE_URL,
@@ -40,8 +67,12 @@ export default defineConfig({
   },
   integrations: [sitemap(), mdx()],
   markdown: {
+    processor: unified({ rehypePlugins: [rehypeEagerImages] }),
     shikiConfig: {
-      theme: 'github-light',
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
     },
   },
 });
