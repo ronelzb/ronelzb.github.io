@@ -63,18 +63,18 @@
 
 <style>
   .theme-toggle {
-    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    border: none;
     background: transparent;
-    cursor: pointer;
+    border: none;
     color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
     opacity: 0.8;
+    padding: 0;
     transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease);
+    width: 2rem;
   }
 
   .theme-toggle:hover {
@@ -82,9 +82,9 @@
   }
 
   .theme-toggle:focus-visible {
-    outline: 1px solid currentColor;
-    outline-offset: 0.25rem;
     border-radius: 4px;
+    outline: 1px solid currentcolor;
+    outline-offset: 0.25rem;
   }
 
   .theme-icon {
@@ -94,22 +94,14 @@
 
   .theme-icon-ring {
     fill: none;
-    stroke: currentColor;
+    stroke: currentcolor;
     stroke-width: 1.45;
   }
 
   .theme-icon-phase {
-    fill: currentColor;
+    fill: currentcolor;
     opacity: 0.62;
     transform-origin: center;
     transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease);
-  }
-
-  :global([data-bs-theme='dark']) .theme-icon {
-    transform: rotate(180deg);
-  }
-
-  :global([data-bs-theme='dark']) .theme-icon-phase {
-    opacity: 0.76;
   }
 </style>

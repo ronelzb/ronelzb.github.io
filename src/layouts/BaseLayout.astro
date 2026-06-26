@@ -24,6 +24,10 @@ const { title, description, ogImage } = Astro.props;
     </div>
     <Footer />
 
+    <script>
+      import 'bootstrap';
+    </script>
+
     <script is:inline>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');

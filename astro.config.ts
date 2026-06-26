@@ -5,6 +5,9 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: process.env.SITE_URL,
   vite: {
+    optimizeDeps: {
+      include: ['bootstrap'],
+    },
     plugins: [
       {
         name: 'astro-toolbar-virtual-module',

@@ -51,20 +51,9 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href :
   <link rel="manifest" href="/manifest.json" />
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Bootstrap 5 -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    is:inline></script>
-
-  <!-- Font Awesome 7 -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
-  />
+  <!-- Vendor CSS (self-hosted, bypasses Vite CSS pipeline) -->
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -78,8 +67,8 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href :
   ></script>
   <script define:vars={{ gaMeasId: SITE.gaMeasId }} is:inline>
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args) {
-      dataLayer.push(args);
+    function gtag() {
+      dataLayer.push(arguments);
     }
     gtag('js', new Date());
     gtag('config', gaMeasId);

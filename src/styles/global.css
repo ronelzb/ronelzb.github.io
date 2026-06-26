@@ -24,6 +24,14 @@ body {
   text-shadow: 2px 2px 8px #000;
 }
 
+[data-bs-theme='dark'] .theme-icon {
+  transform: rotate(180deg);
+}
+
+[data-bs-theme='dark'] .theme-icon-phase {
+  opacity: 0.76;
+}
+
 a {
   color: var(--color-accent);
 }
@@ -59,6 +67,7 @@ a:hover {
 .sidebar-container .short-about img {
   border-radius: 5px;
   display: block;
+  height: auto;
   margin-bottom: 20px;
   width: 100%;
 }

@@ -15,7 +15,8 @@ import '../styles/navbar.css';
         alt={SITE.title}
         title="Home"
         height="40"
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
         decoding="async"
       />
       <span class="d-none d-md-inline">{SITE.title}</span>
