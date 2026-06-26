@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV_PAGES } from '../config';
+import ThemeToggle from './ThemeToggle.astro';
 import '../styles/navbar.css';
 ---
 
@@ -20,17 +21,20 @@ import '../styles/navbar.css';
       <span class="d-none d-md-inline">{SITE.title}</span>
     </a>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#header-collapsible-navbar"
-      aria-controls="header-collapsible-navbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex align-items-center gap-1">
+      <ThemeToggle />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#header-collapsible-navbar"
+        aria-controls="header-collapsible-navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse" id="header-collapsible-navbar">
       <ul class="navbar-nav ms-auto text-end">

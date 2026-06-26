@@ -13,7 +13,7 @@
 }
 
 .tags-list .tag-entry .entry-date {
-  color: #808080;
+  color: var(--color-text-secondary);
   font-size: 1rem;
   font-style: italic;
 }

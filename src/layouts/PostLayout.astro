@@ -39,7 +39,7 @@ const BADGE_URLS: Record<string, string> =
         <div class="col-12 col-md-10 offset-md-1 main-content mt-2 mt-md-3">
           {
             ghRepo && ghBadge.length > 0 && (
-              <div class="mb-3">
+              <div class="mb-3 gh-badges">
                 {ghBadge.map(
                   (badge: string) =>
                     BADGE_URLS[badge] && (

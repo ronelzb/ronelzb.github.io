@@ -1,6 +1,6 @@
 .page-header {
   background: no-repeat center;
-  background-color: #369;
+  background-color: var(--bg-page-header);
   background-size: cover;
   position: relative;
 }
