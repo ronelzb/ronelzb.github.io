@@ -17,10 +17,5 @@ npm run dev     # http://localhost:4321
 npm run test    # runs test suite
 ```
 
-`SITE_URL` must be set at build time for canonical URLs, the sitemap, and RSS:
-
-```sh
-SITE_URL=https://ronelzb.github.io npm run build
-```
-
-In CI this is provided automatically by the GitHub Pages `configure-pages` action.
+`SITE_URL=https://ronelzb.github.io` must be set at build time for canonical URLs, the sitemap,
+and RSS.
