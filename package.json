@@ -4,19 +4,25 @@
   "private": true,
   "description": "Personal portfolio and blog",
   "scripts": {
-    "lint:js": "eslint assets/js/main.js sw.js scripts/setup.mjs",
-    "lint:css": "stylelint \"assets/css/*.css\"",
-    "lint:md": "markdownlint-cli2 \"_posts/**/*.md\" \"*.md\"",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
+    "dev": "node scripts/copy-vendor.mjs && astro dev --open",
+    "build": "node scripts/copy-vendor.mjs && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint:js": "eslint \"src/**/*.{ts,astro}\" \"public/sw.js\" \"scripts/*.mjs\"",
+    "lint:css": "stylelint \"src/styles/*.css\"",
+    "lint:md": "markdownlint-cli2 \"src/content/blog/**/*.md\" \"*.md\"",
+    "typecheck": "astro check",
+    "lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:md",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "setup": "node scripts/setup.mjs",
-    "start": "bundle exec jekyll serve --livereload --open-url",
-    "build": "bundle exec jekyll build",
+    "postinstall": "node scripts/copy-vendor.mjs",
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{ts,astro}": [
       "eslint --fix",
       "prettier --write"
     ],
@@ -30,25 +36,38 @@
     ],
     "*.{json,yml,yaml}": [
       "prettier --write"
-    ],
-    "*.html": [
-      "prettier --write"
     ]
   },
   "overrides": {
     "js-yaml": "^4.2.0",
-    "markdown-it": "^14.2.0"
+    "markdown-it": "^14.2.0",
+    "yaml": ">=2.8.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.7.0",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "markdownlint-cli2": "^0.22.1",
     "prettier": "^3.8.4",
+    "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^17.14.0",
-    "stylelint-config-standard": "^40.0.0"
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.0",
+    "vitest": "^4.1.9"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@popperjs/core": "^2.11.8",
+    "astro": "^7.0.3",
+    "bootstrap": "^5.3.8"
   }
 }

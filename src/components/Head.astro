@@ -1,0 +1,80 @@
+---
+import { getImage } from 'astro:assets';
+import { SITE } from '../config';
+import avatarSrc from '../images/image-avatar.webp';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const processedAvatar = await getImage({ src: avatarSrc });
+const defaultOgImage = Astro.site
+  ? new URL(processedAvatar.src, Astro.site).href
+  : processedAvatar.src;
+
+const { title, description = SITE.description, ogImage = defaultOgImage } = Astro.props;
+
+const pageTitle = title ? `${title} - ${SITE.seoTitle}` : SITE.seoTitle;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+---
+
+<head>
+  <!-- Inline theme init — runs before first paint to prevent FOUC.
+       Writes data-bs-theme so Bootstrap dark mode activates immediately. -->
+  <script is:inline>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored ?? (prefersDark ? 'dark' : 'light');
+      var root = document.documentElement;
+      root.setAttribute('data-bs-theme', theme);
+      root.setAttribute('data-theme', theme);
+      root.classList.toggle('dark', theme === 'dark');
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content={SITE.keywords} />
+  <meta name="author" content={SITE.title} />
+  <meta name="theme-color" content={SITE.chromeTabThemeColor} />
+  <meta name="google-site-verification" content="eaCn6_L_vMfhSXyNrF2189tYTWVwMwFaCTB6xs80DLs" />
+
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.site?.toString()} />
+
+  <title>{pageTitle}</title>
+
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Vendor CSS (self-hosted, bypasses Vite CSS pipeline) -->
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+  />
+
+  <!-- Google Analytics GA4 -->
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaMeasId}`} is:inline
+  ></script>
+  <script define:vars={{ gaMeasId: SITE.gaMeasId }} is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', gaMeasId);
+  </script>
+</head>

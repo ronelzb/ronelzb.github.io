@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../../../layouts/PostLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+  const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  function parseId(p: CollectionEntry<'blog'>) {
+    const [year, month, day, ...rest] = p.id.replace(/\.md$/, '').split('-');
+    return { year, month, day, slug: rest.join('-') };
+  }
+
+  return sorted.map((post, i) => ({
+    params: parseId(post),
+    props: {
+      post,
+      prevPost: sorted[i + 1]
+        ? { title: sorted[i + 1].data.title, ...parseId(sorted[i + 1]) }
+        : null,
+      nextPost: sorted[i - 1]
+        ? { title: sorted[i - 1].data.title, ...parseId(sorted[i - 1]) }
+        : null,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { post, prevPost, nextPost } = Astro.props as Props;
+const { Content } = await render(post);
+
+function toSlug(p: { year: string; month: string; day: string; slug: string }) {
+  return `${p.year}/${p.month}/${p.day}/${p.slug}`;
+}
+---
+
+<PostLayout
+  post={post.data}
+  prevPost={prevPost ? { title: prevPost.title, slug: toSlug(prevPost) } : null}
+  nextPost={nextPost ? { title: nextPost.title, slug: toSlug(nextPost) } : null}
+>
+  <Content />
+</PostLayout>

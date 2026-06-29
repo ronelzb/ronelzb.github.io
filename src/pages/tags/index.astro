@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import '../../styles/tags.css';
+import tagsHeader from '../../images/tags-header.webp';
+
+const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+const tagMap = new Map<string, { title: string; slug: string; date: Date }[]>();
+for (const post of posts) {
+  const slug = post.id.replace(/^(\d{4})-(\d{2})-(\d{2})-/, '$1/$2/$3/');
+  for (const tag of post.data.tags) {
+    if (!tagMap.has(tag)) tagMap.set(tag, []);
+    tagMap.get(tag)!.push({ title: post.data.title, slug, date: post.data.date });
+  }
+}
+
+const sortedTags = [...tagMap.keys()].sort();
+for (const posts of tagMap.values()) {
+  posts.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+}
+---
+
+<PageLayout title="Tags Index" headerImg={tagsHeader}>
+  <section class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 main-content mt-2 mt-md-3">
+          {
+            sortedTags.map((tag) => (
+              <a href={`#${tag}`} class="btn btn-primary tag-btn m-1">
+                <i class="fa fa-tag" aria-hidden="true" />
+                &nbsp;{tag}&nbsp;({tagMap.get(tag)!.length})
+              </a>
+            ))
+          }
+
+          <div class="tags-list">
+            {
+              sortedTags.map((tag) => (
+                <div>
+                  <h2 id={tag} class="linked-section">
+                    <i class="fa fa-tag" aria-hidden="true" />
+                    &nbsp;{tag}&nbsp;({tagMap.get(tag)!.length})
+                  </h2>
+                  <div class="post-list">
+                    {tagMap.get(tag)!.map(({ title, slug, date }) => (
+                      <div class="tag-entry">
+                        <a href={`/${slug}`}>{title}</a>
+                        <div class="entry-date">
+                          <time datetime={date.toISOString()}>
+                            {date.toLocaleDateString('en-US', {
+                              month: 'long',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
+                          </time>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,108 @@
+---
+import { SITE } from '../config';
+import '../styles/footer.css';
+
+const year = new Date().getFullYear();
+
+const socials = [
+  { label: 'RSS', href: '/rss.xml', icon: 'fas fa-rss', external: false },
+  { label: 'Email', href: `mailto:${SITE.email}`, icon: 'fas fa-envelope', external: false },
+  {
+    label: 'GitHub',
+    href: `https://github.com/${SITE.social.github}`,
+    icon: 'fab fa-github',
+    external: true,
+  },
+  {
+    label: 'LinkedIn',
+    href: `https://www.linkedin.com/in/${SITE.social.linkedin}`,
+    icon: 'fab fa-linkedin',
+    external: true,
+  },
+  {
+    label: 'Twitter',
+    href: `https://twitter.com/${SITE.social.twitter}`,
+    icon: 'fab fa-twitter',
+    external: true,
+  },
+  {
+    label: 'YouTube',
+    href: `https://www.youtube.com/channel/${SITE.social.youtube}`,
+    icon: 'fab fa-youtube',
+    external: true,
+  },
+  {
+    label: 'Facebook',
+    href: `https://www.facebook.com/${SITE.social.facebook}`,
+    icon: 'fab fa-facebook',
+    external: true,
+  },
+] as const;
+---
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <ul class="list-inline text-center footer-links">
+          {
+            socials.map(({ label, href, icon, external }) => (
+              <li class="list-inline-item">
+                <a
+                  href={href}
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title={label}
+                  aria-label={label}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span class="fa-stack fa-lg" aria-hidden="true">
+                    <i class="fas fa-circle fa-stack-2x" />
+                    <i class={`${icon} fa-stack-1x fa-inverse`} />
+                  </span>
+                  <span class="visually-hidden">{label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="copyright text-muted text-center">
+          Copyright &copy; {SITE.title}
+          &nbsp; &nbsp;
+          {year}
+          &nbsp;|&nbsp;
+          <a href={SITE.ghRepo} target="_blank" rel="noopener noreferrer">Theme on GitHub</a>
+          &nbsp;
+          <a
+            href={SITE.ghRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-sm btn-outline-secondary gh-badge-btn"
+            data-gh-repo={`${SITE.social.github}/${SITE.social.github}.github.io`}
+            data-gh-type="star"
+          >
+            <i class="fa-solid fa-star fa-fw" aria-hidden="true"></i>
+            {' '}Star<span class="gh-badge-count"></span>
+          </a>
+          <script is:inline>
+            (function () {
+              var btn = document.querySelector('footer .gh-badge-btn[data-gh-type="star"]');
+              if (!btn) return;
+              fetch('https://api.github.com/repos/' + btn.getAttribute('data-gh-repo'))
+                .then(function (r) {
+                  return r.json();
+                })
+                .then(function (d) {
+                  if (d.stargazers_count == null) return;
+                  var span = btn.querySelector('.gh-badge-count');
+                  if (span)
+                    span.textContent = ' (' + Number(d.stargazers_count).toLocaleString() + ')';
+                })
+                .catch(function () {});
+            })();
+          </script>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

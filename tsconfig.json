@@ -1,0 +1,4 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "exclude": ["_site", "assets", "sw.js", "node_modules", "dist"]
+}

@@ -1,0 +1,86 @@
+/* ============================================================
+   Site Design Tokens
+   Complements Bootstrap 5.3 data-bs-theme dark mode.
+   Bootstrap handles body-bg, body-color, and component colors.
+   These tokens cover custom colors Bootstrap does not manage.
+   ============================================================ */
+
+:root {
+  /* Links — custom blue not in the Bootstrap palette */
+  --color-accent: #149dcc;
+  --color-accent-hover: #0085a1;
+
+  /* Heading blue (#369) */
+  --color-heading: #369;
+
+  /* Page header hero background (fallback when no image) */
+  --bg-page-header: #369;
+
+  /* Post metadata date */
+  --color-post-meta: #5e9516;
+
+  /* Muted / secondary text */
+  --color-text-secondary: #808080;
+
+  /* Surfaces */
+  --bg-footer: #eaeaea;
+  --bg-nav-scrolled: #fff;
+  --bg-code: #f8f8f8;
+
+  /* Borders */
+  --border-default: #eee;
+  --border-code: #ddd;
+  --text-code: #444;
+
+  /* Timeline — about page */
+  --timeline-rail: #f1cf63;
+  --timeline-dot: #e67e22;
+  --timeline-dot-border: #fff;
+  --timeline-left-bg: #dff0d8;
+  --timeline-left-shadow: #79a553;
+  --timeline-right-bg: #d9edf7;
+  --timeline-right-shadow: #4c8c99;
+  --timeline-text: #2c3e50;
+
+  /* Motion — borrowed from Tone */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+}
+
+/* Dark overrides — triggered by Bootstrap's data-bs-theme="dark" on <html>.
+   Bootstrap already flips --bs-body-bg, --bs-body-color, and component vars.
+   We only need to flip the custom tokens above. */
+[data-bs-theme='dark'] {
+  /* Links */
+  --color-accent: #5bc8e8;
+  --color-accent-hover: #7dd4ee;
+
+  /* Headings */
+  --color-heading: #6bb3d4;
+  --bg-page-header: #1c2a3a;
+
+  /* Post meta / secondary text */
+  --color-post-meta: #8dcc44;
+  --color-text-secondary: #9e9e9e;
+
+  /* Surfaces */
+  --bg-footer: #1a1e21;
+  --bg-nav-scrolled: #212529;
+  --bg-code: #2c3034;
+
+  /* Borders */
+  --border-default: #2e3338;
+  --border-code: #3a3f44;
+  --text-code: #d0d0d0;
+
+  /* Timeline */
+  --timeline-rail: #b8994a;
+  --timeline-dot: #c0622b;
+  --timeline-dot-border: #2a2a2a;
+  --timeline-left-bg: #1a3020;
+  --timeline-left-shadow: #3a6030;
+  --timeline-right-bg: #152030;
+  --timeline-right-shadow: #204860;
+  --timeline-text: #b8ccd8;
+}

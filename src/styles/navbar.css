@@ -1,0 +1,87 @@
+.navbar {
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.4s,
+    border-color 0.4s,
+    padding 0.4s;
+}
+
+.navbar-brand {
+  padding: unset;
+}
+
+.navbar-color-ghost {
+  background: rgb(0 0 0 / 20%);
+  text-shadow: 2px 2px 8px #000;
+}
+
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link {
+  color: rgb(255 255 255 / 85%);
+}
+
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link:hover,
+.navbar-color-ghost:not(.scrolled, .menu-open) .nav-link.active {
+  color: #fff;
+}
+
+.navbar.scrolled,
+.navbar.menu-open {
+  background: var(--bg-nav-scrolled) !important;
+  border-bottom-color: var(--bs-border-color-translucent);
+  text-shadow: none;
+}
+
+/* ThemeToggle visibility — explicit for every nav state × theme combination.
+   Ghost state: header is always dark/colored, so white icon is correct. */
+.navbar-color-ghost:not(.scrolled, .menu-open) .theme-toggle {
+  color: rgb(255 255 255 / 85%);
+  text-shadow: 2px 2px 8px #000;
+}
+
+/* Scrolled/open in light mode: dark icon on white background */
+.navbar.scrolled .theme-toggle,
+.navbar.menu-open .theme-toggle {
+  color: #343a40;
+}
+
+/* Dark mode — all nav states get a light icon (nav bg is always dark) */
+[data-bs-theme='dark'] .navbar .theme-toggle {
+  color: rgb(255 255 255 / 85%);
+}
+
+/* Dark mode: override Bootstrap's navbar-light text color when scrolled/open */
+[data-bs-theme='dark'] .navbar.scrolled .nav-link,
+[data-bs-theme='dark'] .navbar.menu-open .nav-link {
+  color: rgb(255 255 255 / 75%);
+}
+
+[data-bs-theme='dark'] .navbar.scrolled .nav-link:hover,
+[data-bs-theme='dark'] .navbar.scrolled .nav-link.active,
+[data-bs-theme='dark'] .navbar.menu-open .nav-link:hover,
+[data-bs-theme='dark'] .navbar.menu-open .nav-link.active {
+  color: #fff;
+}
+
+[data-bs-theme='dark'] .navbar.scrolled .navbar-brand,
+[data-bs-theme='dark'] .navbar.menu-open .navbar-brand {
+  color: rgb(255 255 255 / 90%);
+}
+
+@media only screen and (width <= 767px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open::after {
+    background: rgb(0 0 0 / 40%);
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}

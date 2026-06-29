@@ -1,0 +1,19 @@
+.tags-list h2 {
+  font-weight: 1000;
+  margin-top: 2.188rem;
+}
+
+.tags-list .tag-entry {
+  font-size: 1.125rem;
+  margin: 0 0 0.9375rem 1.5625rem;
+}
+
+.tags-list .tag-entry a {
+  font-size: 1.25rem;
+}
+
+.tags-list .tag-entry .entry-date {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  font-style: italic;
+}

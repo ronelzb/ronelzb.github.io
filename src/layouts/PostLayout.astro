@@ -1,0 +1,173 @@
+﻿---
+import type { CollectionEntry } from 'astro:content';
+import PageLayout from './PageLayout.astro';
+import '../styles/posts.css';
+
+interface Props {
+  post: CollectionEntry<'blog'>['data'];
+  prevPost?: { title: string; slug: string } | null;
+  nextPost?: { title: string; slug: string } | null;
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { title, subtitle, date, tags, 'gh-repo': ghRepo, 'gh-badge': ghBadge } = post;
+
+const [ghUser, ghRepoName] = ghRepo ? ghRepo.split('/') : [null, null];
+
+const BADGE_CONFIG: Record<string, { href: string; label: string; icon: string }> =
+  ghUser && ghRepoName
+    ? {
+        star: { href: `https://github.com/${ghRepo}`, label: 'Star', icon: 'fa-solid fa-star' },
+        watch: {
+          href: `https://github.com/${ghRepo}/subscription`,
+          label: 'Watch',
+          icon: 'fa-solid fa-eye',
+        },
+        fork: {
+          href: `https://github.com/${ghRepo}/fork`,
+          label: 'Fork',
+          icon: 'fa-solid fa-code-fork',
+        },
+        follow: {
+          href: `https://github.com/${ghUser}`,
+          label: `Follow @${ghUser}`,
+          icon: 'fa-solid fa-user-plus',
+        },
+      }
+    : {};
+---
+
+<PageLayout
+  title={title}
+  description={subtitle}
+  headerGradient={true}
+  postDate={date}
+  ghRepo={ghRepo}
+  showGhButton={!!ghRepo}
+>
+  <section class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 main-content mt-2 mt-md-3">
+          {
+            ghRepo && ghBadge.length > 0 && (
+              <div class="mb-3 gh-badges d-flex flex-wrap gap-1">
+                {ghBadge.map((badge: string) => {
+                  const cfg = BADGE_CONFIG[badge];
+                  return (
+                    cfg && (
+                      <a
+                        href={cfg.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-sm btn-outline-secondary gh-badge-btn"
+                        data-gh-repo={ghRepo}
+                        data-gh-user={ghUser}
+                        data-gh-type={badge}
+                      >
+                        <i class={`${cfg.icon} fa-fw`} aria-hidden="true" /> {cfg.label}
+                        <span class="gh-badge-count" />
+                      </a>
+                    )
+                  );
+                })}
+              </div>
+            )
+          }
+          <article role="main" class="blog-post">
+            <slot />
+          </article>
+
+          {
+            tags.length > 0 && (
+              <p class="blog-tags mt-3">
+                Tags:{' '}
+                {tags.map((tag: string, i: number) => (
+                  <>
+                    <a href={`/tags#${tag}`}>{tag}</a>
+                    {i < tags.length - 1 && ' '}
+                  </>
+                ))}
+              </p>
+            )
+          }
+
+          <ul class="pagination blog-pager mt-4 p-0">
+            {
+              prevPost && (
+                <li class="page-item previous">
+                  <a class="page-link" href={`/${prevPost.slug}`} title={prevPost.title}>
+                    &larr; Previous Post
+                  </a>
+                </li>
+              )
+            }
+            {
+              nextPost && (
+                <li class="page-item next">
+                  <a class="page-link" href={`/${nextPost.slug}`} title={nextPost.title}>
+                    Next Post &rarr;
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script is:inline>
+  (function () {
+    var btns = document.querySelectorAll('.gh-badge-btn[data-gh-type]');
+    if (!btns.length) return;
+    var repoCache = {};
+    var userCache = {};
+    function setCount(el, count) {
+      if (count == null) return;
+      var span = el.querySelector('.gh-badge-count');
+      if (span) span.textContent = ' (' + Number(count).toLocaleString() + ')';
+    }
+    btns.forEach(function (el) {
+      var type = el.getAttribute('data-gh-type');
+      var repo = el.getAttribute('data-gh-repo');
+      var user = el.getAttribute('data-gh-user');
+      if (type === 'follow') {
+        var u =
+          userCache[user] ||
+          (userCache[user] = fetch('https://api.github.com/users/' + user)
+            .then(function (r) {
+              return r.json();
+            })
+            .catch(function () {
+              return {};
+            }));
+        u.then(function (d) {
+          setCount(el, d.followers);
+        });
+      } else {
+        var r =
+          repoCache[repo] ||
+          (repoCache[repo] = fetch('https://api.github.com/repos/' + repo)
+            .then(function (r) {
+              return r.json();
+            })
+            .catch(function () {
+              return {};
+            }));
+        r.then(function (d) {
+          var count =
+            type === 'star'
+              ? d.stargazers_count
+              : type === 'watch'
+                ? d.subscribers_count
+                : type === 'fork'
+                  ? d.network_count
+                  : null;
+          setCount(el, count);
+        });
+      }
+    });
+  })();
+</script>

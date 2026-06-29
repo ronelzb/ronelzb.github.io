@@ -1,0 +1,128 @@
+.main-content .blog-post p > img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0;
+}
+
+.main-content .blog-post h1,
+.blog-post h2,
+.blog-post h3,
+.blog-post h4,
+.blog-post h5,
+.blog-post h6 {
+  color: var(--color-heading);
+}
+
+.post-preview {
+  border-bottom: 1px solid var(--border-default);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-preview .post-title {
+  color: var(--color-heading);
+}
+
+.post-preview .post-subtitle {
+  font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300;
+}
+
+.post-preview .post-meta {
+  color: var(--color-post-meta);
+  margin: 0 0 0.625rem;
+}
+
+.post-preview .post-read-more {
+  font-weight: 800;
+}
+
+.blog-tags {
+  font-size: 0.9375rem;
+}
+
+.blog-tags,
+.blog-tags a {
+  color: var(--color-text-secondary);
+}
+
+.pagination > .page-item > .page-link {
+  color: var(--bs-body-color);
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.pagination > .page-item.next {
+  margin-left: auto;
+}
+
+table > thead > tr > th {
+  color: var(--color-text-secondary);
+}
+
+table.table-display-block {
+  border: unset;
+  display: block;
+}
+
+/* Inline code only — exclude <code> inside Shiki pre blocks so their own theme
+   background/border/padding is not overridden */
+:not(pre) > code {
+  background-color: var(--bg-code);
+  border: 1px solid var(--border-code);
+  border-radius: 3px;
+  color: var(--text-code);
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+tt {
+  background-color: var(--bg-code);
+  border: 1px solid var(--border-code);
+  border-radius: 3px;
+  margin: 0 2px;
+  padding: 0 5px;
+}
+
+/* Shiki dual-theme: light colors are baked inline; these rules flip to dark vars
+   when our manual theme toggle sets [data-bs-theme='dark'] on <html>.
+   Inline styles have highest specificity so !important is required.
+   github-light uses pure #fff which is invisible on a white page — override with
+   GitHub's actual code-block surface colour and add padding Shiki omits. */
+.astro-code {
+  background-color: #f6f8fa !important;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+}
+
+[data-bs-theme='dark'] .astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+
+[data-bs-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+@media only screen and (width >= 768px) {
+  .sidebar-container {
+    padding-left: 5%;
+  }
+
+  .post-preview .post-title {
+    font-size: 2.25rem;
+  }
+
+  .pagination > .page-item > .page-link {
+    padding: 0.9375rem 1.5625rem;
+  }
+}
