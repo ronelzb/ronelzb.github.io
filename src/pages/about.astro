@@ -3,14 +3,55 @@ import PageLayout from '../layouts/PageLayout.astro';
 import '../styles/about.css';
 import avatarImage from '../images/image-avatar.webp';
 
-const aboutMe =
-  "Hi, my name is Ronel José Zapata Beltrán. I'm a Senior Software Engineer with 17+ years working on data analytics " +
-  'and business intelligence software solutions delivering impactful, robust and reliable engineering products in ' +
-  'the oil, energy, and healthcare fields, working in projects with companies of all sizes and shape.' +
-  '<br /><br />' +
-  'I love getting involved in new challenging projects using cutting edge technologies, getting out of my comfort ' +
-  'zone. I hold a degree in Computer Engineering from Universidad de Oriente in Venezuela and several ' +
-  'certifications on SQL Server, Azure and .NET development. My hobby is Taekwondo, training since 26 years ago to this day.';
+const aboutHook =
+  "Hi, I'm Ronel, a Senior Software Engineer who thrives on engineering high-stakes systems where reliability " +
+  'and precision are non-negotiable. With 14+ years of experience across healthcare technology, SaaS platforms, ' +
+  "and energy sectors, I've found that the best engineering comes from deeply understanding the domain, not just the tech stack.";
+
+const aboutSections = [
+  {
+    title: 'Healthcare & SaaS',
+    icon: 'fas fa-heartbeat',
+    teaser:
+      'Cloud-native ETL pipelines, HIPAA-compliant integrations, DDD, and ML scoring at scale.',
+    content: [
+      'My most recent work has been in healthcare SaaS, where cloud-native architecture fundamentally changes what integration at scale looks like. ' +
+        'At Cedar, I built ETL pipelines orchestrated with Apache Airflow DAGs, ingesting and transforming enterprise client data across AWS S3, Fargate, and ECS, ' +
+        'with infrastructure provisioned end-to-end through Terraform. The SaaS model demanded integrations that were multi-tenant, configurable, and fully observable; ' +
+        'by shifting to a manifest-based approach, we cut time-to-market from six months to four weeks per integration, ' +
+        'while maintaining a 100% integration health score processing millions of records monthly with zero data quality incidents.',
+      'At Dental Link Exchange, I took ownership of the full AWS stack from the ground up: VPC networking and security groups through API Gateway, ' +
+        'Lambda-based workers, SQS queues, and RDS Aurora, wired into an event-driven file processing pipeline handling thousands of dental transactions daily at 99.9% accuracy. ' +
+        'I also built a three-model ML scoring system using LightGBM with Bayesian model comparison to validate training improvements, ' +
+        'covering risk prediction, production forecasting, and timeline estimation, reducing manual review workload by 70%. ' +
+        'The backend was designed around DDD with vertical slice architecture and CQRS, using X12 EDI standards for data interchange and AES-256 encryption across the infrastructure.',
+    ],
+  },
+  {
+    title: 'Oil & Gas',
+    icon: 'fas fa-industry',
+    teaser:
+      'Enterprise production systems, real-time monitoring, and engineering analytics across Latin America, Australia, and the US.',
+    content: [
+      'My origins are in oil & gas, where I spent years consulting on-site for national operators and international energy companies across Latin America, Australia, and the US, ' +
+        'including ExxonMobil, Halliburton, and Sentinel Peak Resources. I built enterprise-grade production systems on Oracle and SQL Server operating across every layer of the integration stack: ' +
+        'official monthly production reports tied to national regulatory submissions, high-frequency daily operational data, and real-time monitoring with Surveillance of Exception to generate field alerts. ' +
+        'On the engineering analytics side, I implemented Decline Curve Analysis for production forecasting and revenue calculation, as well as ESP optimization and production performance tools ' +
+        'that gave operators a unified view across their assets. Each engagement brought a different organization, a different technical landscape, and a new set of constraints to solve; ' +
+        'that constant adaptation is where I grew most as an engineer.',
+    ],
+  },
+  {
+    title: 'Beyond the code',
+    icon: '🥋',
+    teaser:
+      '26+ years of Taekwondo, a 5th Dan, and a firm belief that mastery is a direction, not a destination.',
+    content: [
+      "Outside of work, I've trained Taekwondo for over 26 years and recently earned my 5th Dan. " +
+        'Both engineering and martial arts have taught me the same thing: mastery is a direction, not a destination.',
+    ],
+  },
+];
 
 const facts = [
   'The first computer I was in contact with was a <a href="https://en.wikipedia.org/wiki/Intel_80386" target="_blank">80386</a> which ran MS-DOS and video games like Wolf3d and Prince of Persia.',
@@ -22,16 +63,39 @@ const facts = [
 
 const skills = [
   { name: 'Python', rating: [true, true, true, true, 'half'] },
-  { name: '.NET (C#, VB)', rating: [true, true, true, true, 'half'] },
-  { name: 'Java', rating: [true, true, true, true, false] },
+  { name: 'C# / .NET Core', rating: [true, true, true, true, true] },
+  { name: 'Django', rating: [true, true, true, true, false] },
+  { name: 'MySQL', rating: [true, true, true, true, 'half'] },
   { name: 'PostgreSQL', rating: [true, true, true, true, false] },
   { name: 'SQL Server', rating: [true, true, true, true, false] },
-  { name: 'Oracle', rating: [true, true, true, 'half', false] },
-  { name: 'HTML/CSS', rating: [true, true, true, true, false] },
-  { name: 'JS (JQuery)', rating: [true, true, true, true, 'half'] },
+  { name: 'Snowflake', rating: [true, true, true, 'half', false] },
+  { name: 'HTML/CSS', rating: [true, true, true, true, 'half'] },
+  { name: 'React/Redux', rating: [true, true, true, true, 'half'] },
+  { name: 'Node.js', rating: [true, true, true, true, false] },
+  { name: 'TypeScript', rating: [true, true, true, 'half', false] },
+  { name: 'AWS', rating: [true, true, true, true, 'half'] },
+  { name: 'Docker', rating: [true, true, true, true, false] },
+  { name: 'Terraform', rating: [true, true, true, 'half', false] },
+  { name: 'CI/CD', rating: [true, true, true, true, 'half'] },
+  { name: 'OpenAI / LLM', rating: [true, true, true, true, false] },
 ] as const;
 
 const timeline = [
+  {
+    date: 'Aug 2024',
+    position: 'left',
+    text: 'Promoted to Senior Software Engineer at <a href="https://www.dentallinkexchange.com/" target="_blank">Dental Link Exchange</a>',
+  },
+  {
+    date: 'Oct 2023',
+    position: 'right',
+    text: 'Earned certification: AWS Certified Developer – Associate',
+  },
+  {
+    date: 'Oct 2023',
+    position: 'left',
+    text: 'Started a new position working part-time as Software Engineer III at <a href="https://www.dentallinkexchange.com/" target="_blank">Dental Link Exchange</a>, building HIPAA-compliant dental data interchange systems with DDD and CQRS',
+  },
   {
     date: 'Jun 2023',
     position: 'right',
@@ -50,7 +114,7 @@ const timeline = [
   {
     date: 'Apr 2022',
     position: 'left',
-    text: 'Started a new position as Software Engineer at <a href="https://www.cedar.com/">Cedar</a>',
+    text: 'Started a new position as Software Engineer at <a href="https://www.cedar.com/" target="_blank">Cedar Cares, Inc.</a>, building HIPAA-compliant healthcare payment technology',
   },
   {
     date: 'May 2020',
@@ -151,7 +215,30 @@ function starIcon(val: true | false | 'half'): string {
       <div class="row">
         <div class="col-12">
           <h2 class="text-center">About me</h2>
-          <p set:html={aboutMe} />
+          <p set:html={aboutHook} />
+          <div class="about-sections mt-3">
+            {
+              aboutSections.map((section) => (
+                <details class="about-section">
+                  <summary>
+                    {section.icon.startsWith('fa') ? (
+                      <i class={`${section.icon} about-section-icon`} />
+                    ) : (
+                      <span class="about-section-icon about-section-emoji">{section.icon}</span>
+                    )}
+                    <strong>{section.title}</strong>
+                    <span class="about-teaser ms-2">{section.teaser}</span>
+                    <i class="fas fa-chevron-right about-chevron ms-auto" />
+                  </summary>
+                  <div class="section-content">
+                    {section.content.map((para) => (
+                      <p set:html={para} />
+                    ))}
+                  </div>
+                </details>
+              ))
+            }
+          </div>
         </div>
         <div class="col-12 col-md-6">
           <h4 class="border-bottom border-secondary">Fun Facts</h4>
