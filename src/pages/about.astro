@@ -3,9 +3,14 @@ import PageLayout from '../layouts/PageLayout.astro';
 import '../styles/about.css';
 import avatarImage from '../images/image-avatar.webp';
 
+const careerStart = new Date('2011-09-01');
+const yearsOfExperience = Math.floor(
+  (new Date().getTime() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000),
+);
+
 const aboutHook =
   "Hi, I'm Ronel, a Senior Software Engineer who thrives on engineering high-stakes systems where reliability " +
-  'and precision are non-negotiable. With 14+ years of experience across healthcare technology, SaaS platforms, ' +
+  `and precision are non-negotiable. With ${yearsOfExperience}+ years of experience across healthcare technology, SaaS platforms, ` +
   "and energy sectors, I've found that the best engineering comes from deeply understanding the domain, not just the tech stack.";
 
 const aboutSections = [
