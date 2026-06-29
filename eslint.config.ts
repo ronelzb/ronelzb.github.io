@@ -1,22 +1,21 @@
-// @ts-check
+import { defineConfig } from 'eslint/config';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import astro from 'eslint-plugin-astro';
 import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 
-/** @type {import('typescript-eslint').ConfigArray} */
-export default [
+export default defineConfig(
   { ignores: ['dist/**', '.astro/**', 'node_modules/**'] },
 
   // Base JS rules
   js.configs.recommended,
 
   // TypeScript syntax rules (no type info needed) — .ts and .astro script blocks
-  ...tseslint.configs.recommended,
+  tseslint.configs.recommended,
 
   // Astro-specific rules
-  ...astro.configs.recommended,
+  astro.configs.recommended,
 
   ...tseslint.configs.recommendedTypeChecked.map((config) => ({
     ...config,
@@ -47,7 +46,7 @@ export default [
   },
 
   {
-    files: ['scripts/**/*.mjs'],
+    files: ['scripts/**/*.ts'],
     languageOptions: { globals: globals.node },
     rules: {
       'no-console': 'off',
@@ -57,4 +56,4 @@ export default [
 
   // Prettier compatibility — must be last
   prettierConfig,
-];
+);

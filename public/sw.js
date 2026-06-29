@@ -1,6 +1,7 @@
+// @ts-check
+/// <reference lib="webworker" />
+
 /* ===========================================================
- * sw.js
- * ===========================================================
  * Copyright 2016 @huxpro
  * Licensed under Apache 2.0
  * Register service worker.
@@ -9,12 +10,22 @@
 const PRECACHE = 'precache-v3';
 const RUNTIME = 'runtime-v2';
 const CURRENT_CACHES = [PRECACHE, RUNTIME];
+
+// Cast self to ServiceWorkerGlobalScope — without a tsconfig override the DOM lib
+// wins and types self as Window, losing skipWaiting/clients/FetchEvent overloads.
+// WorkerGlobalScope is the spec-correct intermediate (SW extends Worker extends EventTarget).
+const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {WorkerGlobalScope} */ (self));
+
 const HOSTNAME_WHITELIST = [
-  self.location.hostname,
+  sw.location.hostname,
   "cdnjs.cloudflare.com"
 ];
 
-// The Util Function to hack URLs of intercepted requests
+/**
+ * The Util Function to hack URLs of intercepted requests.
+ * @param {Request} req
+ * @returns {string}
+ */
 const getFixedUrl = (req) => {
   const now = Date.now();
   const url = new URL(req.url);
@@ -23,7 +34,7 @@ const getFixedUrl = (req) => {
   // Just keep syncing with location.protocol
   // fetch(httpURL) belongs to active mixed content.
   // And fetch(httpRequest) is not supported yet.
-  url.protocol = self.location.protocol;
+  url.protocol = sw.location.protocol;
 
   // 2. add query for caching-busting.
   // Github Pages served with Cache-Control: max-age=600
@@ -34,32 +45,48 @@ const getFixedUrl = (req) => {
   return url.href;
 }
 
-// The Util Function to detect and polyfill req.mode="navigate"
-// request.mode of 'navigate' is unfortunately not supported in Chrome
-// versions older than 49, so we need to include a less precise fallback,
-// which checks for a GET request with an Accept: text/html header.
-const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')));
+/**
+ * The Util Function to detect and polyfill req.mode="navigate".
+ * request.mode of 'navigate' is unfortunately not supported in Chrome
+ * versions older than 49, so we need to include a less precise fallback,
+ * which checks for a GET request with an Accept: text/html header.
+ * @param {Request} req
+ * @returns {boolean}
+ */
+const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept')?.includes('text/html') === true));
 
-// The Util Function to detect if a req is end with extension
-// Accordin to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
-// Any HTML's navigation has consistently mode="navigate" type="" and destination="document"
-// including requesting an img (or any static resources) from URL Bar directly.
-// So It ends up with that regExp is still the king of URL routing ;)
-// P.S. An url.pathname has no '.' can not indicate it ends with extension (e.g. /api/version/1.2/)
+/**
+ * The Util Function to detect if a req URL ends with a file extension.
+ * According to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
+ * any HTML navigation has consistently mode="navigate" type="" and destination="document",
+ * including requesting an img (or any static resource) from the URL bar directly.
+ * So it ends up that regExp is still the king of URL routing.
+ * P.S. A url.pathname with no '.' cannot indicate it ends with extension (e.g. /api/version/1.2/)
+ * @param {Request} req
+ * @returns {boolean}
+ */
 const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/));
 
-// Redirect in SW manually fixed github pages arbitray 404s on things?blah
-// what we want:
-//    repo?blah -> !(gh 404) -> sw 302 -> repo/?blah
-//    .ext?blah -> !(sw 302 -> .ext/?blah -> gh 404) -> .ext?blah
-// If It's a navigation req and it's url.pathname isn't end with '/' or '.ext'
-// it should be a dir/repo request and need to be fixed (a.k.a be redirected)
-// Tracking https://twitter.com/Huxpro/status/798816417097224193
+/**
+ * Redirect in SW manually fixed github pages arbitrary 404s on things?blah.
+ * What we want:
+ *   repo?blah -> !(gh 404) -> sw 302 -> repo/?blah
+ *   .ext?blah -> !(sw 302 -> .ext/?blah -> gh 404) -> .ext?blah
+ * If it's a navigation req and its url.pathname isn't ending with '/' or '.ext'
+ * it should be a dir/repo request and needs to be fixed (a.k.a be redirected).
+ * Tracking https://twitter.com/Huxpro/status/798816417097224193
+ * @param {Request} req
+ * @returns {boolean}
+ */
 const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathname.slice(-1) !== "/" && !endWithExtension(req));
 
-// The Util Function to get redirect URL
-// `${url}/` would mis-add "/" in the end of query, so we use URL object.
-// P.P.S. Always trust url.pathname instead of the whole url string.
+/**
+ * The Util Function to get redirect URL.
+ * `${url}/` would mis-add "/" at the end of query, so we use the URL object.
+ * P.P.S. Always trust url.pathname instead of the whole url string.
+ * @param {Request} req
+ * @returns {string}
+ */
 const getRedirectUrl = (req) => {
   const url = new URL(req.url);
   url.pathname += "/";
@@ -74,7 +101,7 @@ const getRedirectUrl = (req) => {
  *  waitUntil() : installing ====> installed
  *  skipWaiting() : waiting(installed) ====> activating
  */
-self.addEventListener('install', e => {
+sw.addEventListener('install', e => {
   e.waitUntil(
     caches.open(PRECACHE).then(async cache => {
       try {
@@ -82,7 +109,7 @@ self.addEventListener('install', e => {
       } catch (err) {
         console.debug(err);
       }
-      return self.skipWaiting();
+      return sw.skipWaiting();
     })
   );
 });
@@ -95,7 +122,7 @@ self.addEventListener('install', e => {
  *
  *  waitUntil(): activating ====> activated
  */
-self.addEventListener('activate', event => {
+sw.addEventListener('activate', event => {
   console.log('service worker activated.');
   event.waitUntil(
     caches.keys()
@@ -106,7 +133,7 @@ self.addEventListener('activate', event => {
             .map(name => caches.delete(name))
         )
       )
-      .then(() => self.clients.claim())
+      .then(() => sw.clients.claim())
   );
 });
 
@@ -117,7 +144,7 @@ self.addEventListener('activate', event => {
  *
  *  void respondWith(Promise<Response> r);
  */
-self.addEventListener('fetch', event => {
+sw.addEventListener('fetch', event => {
   // logs for debugging
   //console.log(`fetch ${event.request.url}`);
   //console.log(` - type: ${event.request.type}; destination: ${event.request.destination}`)
@@ -154,15 +181,17 @@ self.addEventListener('fetch', event => {
     // If there's nothing in cache, wait for the fetch.
     // If neither yields a response, return offline pages.
     event.respondWith(
-      Promise.race([fetched.catch(() => cached), cached])
-        .then(resp => resp || fetched)
-        .catch(() => caches.match('/offline/'))
+      /** @type {Promise<Response>} */ (
+        Promise.race([fetched.catch(() => cached), cached])
+          .then(resp => resp || fetched)
+          .catch(() => caches.match('/offline/'))
+      )
     );
 
     // Update the cache with the version we fetched (only for ok status)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
-        .then(([response, cache]) => response.ok && cache.put(event.request, response))
+        .then(([response, cache]) => { if (response.ok) cache.put(event.request, response); })
         .catch(() => {/* eat any errors */ })
     );
   }

@@ -28,10 +28,9 @@ const { title, description, ogImage } = Astro.props;
       import 'bootstrap';
     </script>
 
-    <script is:inline>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
-      }
+    <script>
+      import { bootServiceWorker } from '../utils/sw-boot';
+      bootServiceWorker(import.meta.env.PROD);
     </script>
   </body>
 </html>

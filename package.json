@@ -2,28 +2,29 @@
   "name": "ronelzb-github-io",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Personal portfolio and blog",
   "scripts": {
-    "dev": "node scripts/copy-vendor.mjs && astro dev --open",
-    "build": "node scripts/copy-vendor.mjs && astro build",
+    "dev": "node scripts/copy-vendor.ts && astro dev --open",
+    "build": "node scripts/copy-vendor.ts && astro build",
     "preview": "astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint:js": "eslint \"src/**/*.{ts,astro}\" \"public/sw.js\" \"scripts/*.mjs\"",
+    "lint:js": "eslint --flag unstable_native_nodejs_ts_config \"src/**/*.{ts,astro}\" \"public/sw.js\" \"scripts/*.ts\"",
     "lint:css": "stylelint \"src/styles/*.css\"",
     "lint:md": "markdownlint-cli2 \"src/content/blog/**/*.md\" \"*.md\"",
     "typecheck": "astro check",
     "lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:md",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "setup": "node scripts/setup.mjs",
-    "postinstall": "node scripts/copy-vendor.mjs",
+    "setup": "node scripts/setup.ts",
+    "postinstall": "node scripts/copy-vendor.ts",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,astro}": [
-      "eslint --fix",
+      "eslint --flag unstable_native_nodejs_ts_config --fix",
       "prettier --write"
     ],
     "*.css": [

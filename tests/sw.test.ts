@@ -130,7 +130,7 @@ describe('SW — activate handler', () => {
 
   it('preserves current versioned caches', async () => {
     const { handlers, mockCaches } = createContext();
-    mockCaches.keys.mockResolvedValue(['precache-v2', 'runtime-v2']);
+    mockCaches.keys.mockResolvedValue(['precache-v3', 'runtime-v2']);
 
     const promises: Promise<unknown>[] = [];
     handlers.activate({ waitUntil: (p: Promise<unknown>) => promises.push(p) });

@@ -9,17 +9,17 @@
  * public/vendor/ is gitignored — npm is the single source of truth for versions.
  */
 import { cpSync, mkdirSync } from 'node:fs';
+import type { CopySyncOptions } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const nm = (...p) => resolve(root, 'node_modules', ...p);
-const out = (...p) => resolve(root, 'public', 'vendor', ...p);
+const root = resolve(import.meta.dirname, '..');
+const nm = (...p: string[]) => resolve(root, 'node_modules', ...p);
+const out = (...p: string[]) => resolve(root, 'public', 'vendor', ...p);
 
-const green = (s) => `\x1b[32m${s}\x1b[0m`;
-const ok = (msg) => console.log(green(`    OK  ${msg}`));
+const green = (s: string) => `\x1b[32m${s}\x1b[0m`;
+const ok = (msg: string) => console.log(green(`    OK  ${msg}`));
 
-function copy(src, dest, opts = {}) {
+function copy(src: string, dest: string, opts: CopySyncOptions = {}): void {
   mkdirSync(dirname(dest), { recursive: true });
   cpSync(src, dest, opts);
 }
@@ -30,10 +30,15 @@ copy(nm('bootstrap', 'dist', 'css', 'bootstrap.min.css'), out('bootstrap.min.css
 copy(nm('bootstrap', 'dist', 'css', 'bootstrap.min.css.map'), out('bootstrap.min.css.map'));
 ok('bootstrap.min.css + .map');
 
-copy(nm('@fortawesome', 'fontawesome-free', 'css', 'all.min.css'), out('fontawesome', 'css', 'all.min.css'));
+copy(
+  nm('@fortawesome', 'fontawesome-free', 'css', 'all.min.css'),
+  out('fontawesome', 'css', 'all.min.css'),
+);
 ok('fontawesome/css/all.min.css');
 
-copy(nm('@fortawesome', 'fontawesome-free', 'webfonts'), out('fontawesome', 'webfonts'), { recursive: true });
+copy(nm('@fortawesome', 'fontawesome-free', 'webfonts'), out('fontawesome', 'webfonts'), {
+  recursive: true,
+});
 ok('fontawesome/webfonts/ (4 woff2 files)');
 
 console.log(green('\nVendor assets ready.\n'));
