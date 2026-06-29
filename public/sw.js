@@ -6,7 +6,7 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v2';
+const PRECACHE = 'precache-v3';
 const RUNTIME = 'runtime-v2';
 const CURRENT_CACHES = [PRECACHE, RUNTIME];
 const HOSTNAME_WHITELIST = [
@@ -76,10 +76,13 @@ const getRedirectUrl = (req) => {
  */
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(PRECACHE).then(cache => {
-      return cache.add('offline.html')
-      .then(self.skipWaiting())
-      .catch(err => console.log(err))
+    caches.open(PRECACHE).then(async cache => {
+      try {
+        await cache.add('/offline/');
+      } catch (err) {
+        console.debug(err);
+      }
+      return self.skipWaiting();
     })
   );
 });
@@ -133,7 +136,7 @@ self.addEventListener('fetch', event => {
   if (HOSTNAME_WHITELIST.indexOf(requestHostname) > -1) {
 
     // Redirect in SW manually fixed github pages 404s on repo?blah
-    if(shouldRedirect(event.request)){
+    if (shouldRedirect(event.request)) {
       event.respondWith(Response.redirect(getRedirectUrl(event.request)));
       return;
     }
@@ -143,7 +146,7 @@ self.addEventListener('fetch', event => {
     // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
     const cached = caches.match(event.request);
     const fixedUrl = getFixedUrl(event.request);
-    const fetched = fetch(fixedUrl, {cache: "no-store"});
+    const fetched = fetch(fixedUrl, { cache: "no-store" });
     const fetchedCopy = fetched.then(resp => resp.clone());
 
     // Call respondWith() with whatever we get first.
@@ -153,14 +156,14 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       Promise.race([fetched.catch(() => cached), cached])
         .then(resp => resp || fetched)
-        .catch(() => caches.match('offline.html'))
+        .catch(() => caches.match('/offline/'))
     );
 
     // Update the cache with the version we fetched (only for ok status)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
         .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(() => {/* eat any errors */})
+        .catch(() => {/* eat any errors */ })
     );
   }
 });
